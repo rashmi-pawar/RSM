@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Contact us
+    </ion-title>
+    <ion-buttons slot="end" class="heart-btn">
+      <ion-icon name="heart" (click)="addToFavourites('Contact us', 'contactus')" *ngIf="isFav == false">
+      </ion-icon>
+      <ion-icon name="heart" (click)="removefavourites('contactus')" *ngIf="isFav == true" style="color: red">
+      </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item (click)="goTo('sendmessage')">
+      <img src="assets/img/contact-us/mailing.png" width="35" />
+      <ion-label>Send us a message</ion-label>
+    </ion-item>
+    <ion-item (click)="goTo('findus')">
+      <img src="assets/img/contact-us/find-us.png" width="35" />
+
+      <ion-label>Find us</ion-label>
+    </ion-item>
+    <ion-item (click)="goToURl('https://www.rsm.global/australia/')">
+      <img src="assets/img/contact-us/website.png" width="35" />
+      <ion-label>Visit our website</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-col>
+        <div class="social-icons">
+          <p class="social-title">Connect with us</p>
+          <ion-icon class="social-icon" src="assets/img/contact-us/linkedin.svg"
+            (click)="openLinkedIn('rsm-australia')"></ion-icon>
+          <ion-icon class="social-icon" src="assets/img/contact-us/facebook.svg"
+            (click)="openFacebook('1091977710817808')"></ion-icon>
+          <ion-icon class="social-icon" src="assets/img/contact-us/twitter.svg" (click)="openTwitter('rsm_au')">
+          </ion-icon>
+          <ion-icon class="social-icon" src="assets/img/contact-us/instagram.svg" (click)="openInstagram('rsm_au')">
+          </ion-icon>
+          <ion-icon class="social-icon" src="assets/img/contact-us/youtube.svg"
+            (click)="openYoutube('UCgrHfT_epbTAaC55alX2Hzg')"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-item>
+  </ion-list>
+</ion-content>

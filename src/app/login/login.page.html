@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <div class="rsm-welcome">
+      <img class="logo" src="assets/img/home/rsm-logo.svg" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="onAddForm" class="list-form">
+    <div class="social ion-padding-horizontal">
+      <ion-text class="account-data">
+        <h6>Login with</h6>
+      </ion-text>
+      <ion-row class="text-center">
+        <ion-col size="{{isAppleSignIn() ? '4' : '6'}}" no-padding (click)="fbLogin()">
+          <button type="button" class="fb-btn"><img src="assets/icon/ficn.png"></button>
+        </ion-col>
+        <ion-col size="{{isAppleSignIn() ? '4' : '6'}}" no-padding (click)="googleLogin()">
+          <button type="button" class="gogle">
+            <ion-icon name="logo-googleplus"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col *ngIf="isAppleSignIn()" size="4" no-padding (click)="appleLogin()">
+          <button type="button" class="apple">
+            <ion-icon name="logo-apple"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="text-center">
+        <ion-col size="12" no-padding (click)="azureLogin()">
+          <button type="button" class="azure">
+            Sign in with Azure AD
+          </button>
+        </ion-col>
+      </ion-row>
+      <h5 class="text-center">OR</h5>
+    </div>
+    <div class="ion-padding-horizontal">
+      <ion-item no-padding>
+        <ion-label position="floating">Email Address</ion-label>
+        <ion-input type="text" inputmode="email" formControlName="email"></ion-input>
+      </ion-item>
+      <div no-padding *ngIf="onAddForm.controls.email.hasError('required') && onAddForm.controls.email.touched">
+        <p class="text08">Please enter email address.</p>
+      </div>
+      <div lines="none" no-padding
+        *ngIf="onAddForm.controls.email.hasError('pattern') && onAddForm.controls.email.touched">
+        <p class="text08">Enter valid email address</p>
+      </div>
+
+      <ion-item no-padding>
+        <ion-label position="floating">Password</ion-label>
+        <app-show-hide-password>
+        <ion-input type="Password" inputmode="password" formControlName="password"></ion-input>
+      </app-show-hide-password>
+      </ion-item>
+      <div *ngIf="onAddForm.controls.password.hasError('required') && onAddForm.controls.password.touched">
+        <p class="text08">Please enter password.</p>
+      </div>
+      <ion-text>
+        <p class="for-pass" (click)="goo('forgotpassword')">Forgot password?</p>
+      </ion-text>
+      <br>
+      <ion-button color="primary" expand="full" [disabled]="!onAddForm.valid" (click)="signIn()" mode="md">Login
+      </ion-button>
+      <div class="log-here  ion-padding-vertical">
+        <p>Don’t have an account?<span class="blue-color" (click)="goo('signup')">Register here</span></p>
+      </div>
+    </div>
+
+  </form>
+</ion-content>

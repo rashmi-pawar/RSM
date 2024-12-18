@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Tools and calculators
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item (click)="goTo('viewreceipt')">
+      <ion-img slot="start" src="assets/img/home/favourites/receipt.png"></ion-img>
+      <ion-label>Receipt Manager</ion-label>
+    </ion-item>
+    <ion-item (click)="goTo('triplogbook')">
+      <ion-img slot="start" src="assets/img/home/favourites/logbook.png"></ion-img>
+      <ion-label>GPS Logbook</ion-label>
+    </ion-item>
+    <ion-item (click)="goTo('calculator')">
+      <ion-img slot="start" src="assets/img/home/favourites/calculator.png"></ion-img>
+      <ion-label>Calculators</ion-label>
+    </ion-item>
+    <ion-item (click)="pagePush('tax-information')">
+      <ion-img slot="start" src="assets/img/tax.png"></ion-img>
+      <ion-label>Important Tax Information</ion-label>
+    </ion-item>
+    <ion-item (click)="pagePush('investment-information')">
+      <ion-img slot="start" src="assets/img/payment.png"></ion-img>
+      <ion-label>Investment Information</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

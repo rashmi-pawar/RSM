@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item lines="none" no-padding>
+      <ion-icon name="locate" color="primary"> </ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('triphistory')">Trip History</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('triphistory')"></ion-icon>
+    </ion-item>
+    <ion-item lines="none" no-padding>
+      <ion-icon name="locate" color="primary"> </ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('tripsetting')">Trip Settings</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('tripsetting')"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="userData != undefined && userData" lines="none" no-padding>
+      <ion-icon color="primary" name="create"></ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('updateprofile')">Edit Profile</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('updateprofile')"></ion-icon>
+    </ion-item>
+
+    <ion-item *ngIf="userData != undefined && userData" lines="none" no-padding>
+      <ion-icon color="primary" name="cash"></ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('subscription')">Subscription</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('subscription')"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="buttonItems.name == 'Logout'" lines="none" no-padding>
+      <ion-icon color="primary" name="person"></ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('updatepassword')">Change Password</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('updatepassword')"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="buttonItems.name == 'Logout'" lines="none" no-padding>
+      <ion-icon color="primary" name="open"></ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="logout()">Logout</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="logout()"></ion-icon>
+    </ion-item>
+    <ion-item *ngIf="buttonItems.name == 'Login'" lines="none" no-padding>
+      <ion-icon color="primary" name="person"></ion-icon>
+      <ion-label style="margin-left: 10px;" (click)="goTo('login')">Login</ion-label>
+      <ion-icon color="primary" name="arrow-forward" (click)="goTo('login')"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">
+      Update Profile
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div>
+    <ion-segment-button mode="md">
+      <div class="profile-pic" (click)="editProfileClick()">
+        <img class="avtar" src="{{this.userData.profile_pic || 'assets/img/avatar.jpg' }}" onerror="this.src='assets/img/avatar.jpg'" width="60" height="60"/>
+        <ion-icon class="avtar-icon" name="md-create"></ion-icon>
+      </div>
+    </ion-segment-button>
+  </div>
+  <form [formGroup]="onAddForm" class="list-form">
+    <ion-item lines="none" no-padding class="log-data">
+      <ion-label position="stacked">First Name</ion-label>
+      <ion-input placeholder="First Name" class="login-inputt" type="text" formControlName="firstname"></ion-input>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.firstname.hasError('required') && onAddForm.controls.firstname.touched">
+      <p class="text08">Sorry, field first name is required!</p>
+    </ion-item>
+    <ion-item lines="none" no-padding class="log-data">
+      <ion-label position="stacked">Last Name</ion-label>
+      <ion-input placeholder="Last Name" class="login-inputt" type="text" formControlName="lastname">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.lastname.hasError('required') && onAddForm.controls.lastname.touched">
+      <p class="text08">Sorry, field last name is required!</p>
+    </ion-item>
+    <ion-item lines="none" no-padding class="log-data">
+      <ion-label position="stacked">Email Address</ion-label>
+      <ion-input placeholder="Email" class="login-inputt" type="email" formControlName="email" [disabled]>
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.email.hasError('required') && onAddForm.controls.email.touched">
+      <p class="text08">Sorry, field Email is required!</p>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.email.hasError('pattern') && onAddForm.controls.email.touched">
+      <p class="text08">Enter valid email address</p>
+    </ion-item>
+    <ion-item lines="none" no-padding class="log-data">
+      <ion-label position="stacked">Mobile Number</ion-label>
+      <ion-input placeholder="Mobile Number" class="login-inputt" type="tel" formControlName="mobile_no"
+        pattern="[0-9]*" minlength="10" maxlength="10">
+      </ion-input>
+    </ion-item>
+    <ion-item lines=" none" no-padding
+      *ngIf="onAddForm.controls.mobile_no.hasError('required') && onAddForm.controls.mobile_no.touched">
+      <p class="text08">Sorry, field Mobile Number is required!</p>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="(!onAddForm.controls.mobile_no.hasError('pattern') && (onAddForm.controls.mobile_no.hasError('minlength') || onAddForm.controls.mobile_no.hasError('maxlength'))) && onAddForm.controls.mobile_no.touched">
+      <p class="text08">Enter valid mobile number</p>
+    </ion-item>
+
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.mobile_no.hasError('pattern') && onAddForm.controls.mobile_no.touched">
+      <p class="text08">Enter valid mobile number</p>
+    </ion-item>
+    <ion-item lines="none" no-padding class="log-data">
+      <ion-label position="stacked">Post Code</ion-label>
+      <ion-input placeholder="Post Code" class="login-inputt" type="number" formControlName="pincode" pattern="[0-9]*">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.pincode.hasError('required') && onAddForm.controls.pincode.touched">
+      <p class="text08">Sorry, field Postcode is required!</p>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.pincode.hasError('pattern') && onAddForm.controls.pincode.touched">
+      <p class="text08">Enter valid postcode</p>
+    </ion-item>
+  </form>
+  <div>
+    <ion-button color="primary" class="log-btn" mode="ios" icon-left size="medium" expand="full" (click)="update()"
+      [disabled]="!onAddForm.valid" tappable>
+      SAVE
+    </ion-button>
+    <ion-button color="danger" class="log-btn" mode="ios" icon-left size="medium" expand="full"
+      routerLink="/updatepassword" tappable>
+      UPDATE PASSWORD
+    </ion-button>
+  </div>
+  <div class="filter" padding *ngIf="showProfileViewer">
+    <div class="viewer" padding>
+      <div class="close-btn" >
+        <ion-button (click)="showProfileViewer = false">
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-button>
+      </div>
+      <img src="{{this.userData.profile_pic || 'assets/img/avatar.jpg' }}" onerror="this.src='assets/img/avatar.jpg'"/>
+    </div>
+  </div>
+</ion-content>

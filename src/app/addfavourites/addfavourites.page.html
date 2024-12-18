@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+    </ion-buttons>
+    <ion-title>
+      FAVOURITE LIST
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="favitems.length">
+      <ion-col size="6" *ngFor="let listdata of favitems ;let i = index ">
+        <div class="abc" (click)="goTo(listdata.url)" (press)="pressed($event)">
+          <p style="padding-top: 17px;">{{listdata.name}}</p><br>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!favitems.length" class="nodata">
+      No data found!
+    </ion-row>
+  </ion-grid>
+</ion-content>

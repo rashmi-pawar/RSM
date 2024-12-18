@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Event Sign In
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="isValidEnventId() && isNotregister">
+    <form [formGroup]="onAddForm" class="list-form">
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input placeholder="First Name" class="login-inputt" type="text" formControlName="firstname"></ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_first_name" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> Share first name with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.firstname.hasError('required') && onAddForm.controls.firstname.dirty">
+        <p class="text08">Sorry, field first name is required!</p>
+      </ion-item>
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input placeholder="Last Name" class="login-inputt" type="text" formControlName="lastname">
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_last_name" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> Share last name with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.lastname.hasError('required') && onAddForm.controls.lastname.dirty">
+        <p class="text08">Sorry, field last name is required!</p>
+      </ion-item>
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">Email Address</ion-label>
+        <ion-input placeholder="Email" class="login-inputt" type="email" formControlName="email" [disabled]>
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_email" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> Share email with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines=" none" no-padding
+        *ngIf="onAddForm.controls.email.hasError('required') && onAddForm.controls.email.dirty">
+        <p class="text08">Sorry, field Email is required!</p>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.email.hasError('pattern') && onAddForm.controls.email.dirty">
+        <p class="text08">Enter valid email number</p>
+      </ion-item>
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">Mobile Number</ion-label>
+        <ion-input placeholder="Mobile Number" class="login-inputt" type="tel" formControlName="mobile_no"
+          pattern="[0-9]*" minlength="10" maxlength="10">
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_mobile" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> Share mobile number with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines=" none" no-padding
+        *ngIf="onAddForm.controls.mobile_no.hasError('required') && onAddForm.controls.mobile_no.dirty">
+        <p class="text08">Sorry, field Mobile Number is required!</p>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="(!onAddForm.controls.mobile_no.hasError('pattern') && (onAddForm.controls.mobile_no.hasError('minlength') || onAddForm.controls.mobile_no.hasError('maxlength'))) && onAddForm.controls.mobile_no.dirty">
+        <p class="text08">Mobile number should be of 10 digits</p>
+      </ion-item>
+  
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.mobile_no.hasError('pattern') && onAddForm.controls.mobile_no.dirty">
+        <p class="text08">Enter valid mobile number</p>
+      </ion-item>
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">Post Code</ion-label>
+        <ion-input placeholder="Post Code" class="login-inputt" type="number" formControlName="post_code" pattern="[0-9]*">
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_post_code" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> &nbsp;Share post code with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.post_code.hasError('required') && onAddForm.controls.post_code.dirty">
+        <p class="text08">Sorry, field Postcode is required!</p>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.post_code.hasError('pattern') && onAddForm.controls.post_code.dirty">
+        <p class="text08">Enter valid post code</p>
+      </ion-item>
+      <ion-item lines="none" no-padding class="log-data field-row">
+        <ion-label position="stacked">LinkedIn Url</ion-label>
+        <ion-input placeholder="LinkedIn Url" class="login-inputt" type="text" formControlName="linkedin_url">
+        </ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row" *ngIf="onAddForm.value.is_agree_share_detail">
+        <ion-checkbox formControlName="is_share_linkedin_url" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> &nbsp;Share linkedin Url with other attendees?</ion-label>  
+      </ion-item>
+      <ion-item lines="none" no-padding class="checkbox-row">
+        <ion-checkbox formControlName="is_agree_share_detail" mode="md" class="checkbox"></ion-checkbox>
+        <ion-label class="label"> I agree to share my details with other attendees in the event</ion-label>  
+      </ion-item>
+    </form>
+    <div>
+      <ion-button color="primary" class="log-btn" mode="ios" icon-left size="medium" expand="full" (click)="update()"
+        tappable>
+        SAVE
+      </ion-button>
+    </div>
+  </div>
+  <div *ngIf="!isValidEnventId() && isNotregister">
+    <ion-button color="primary" class="log-btn" mode="ios" icon-left size="medium" expand="full" (click)="scanQR()"
+        tappable>
+        Scan QR
+      </ion-button>
+  </div>
+  
+
+</ion-content>

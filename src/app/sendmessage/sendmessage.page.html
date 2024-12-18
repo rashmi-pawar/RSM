@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Send us a message
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="onAddForm">
+    <ion-item no-padding>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" formControlName="name" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item no-padding lines="none" *ngIf="
+        onAddForm.controls.name.hasError('required') &&
+        onAddForm.controls.name.touched
+      ">
+      <p class="text08">Please enter name.</p>
+    </ion-item>
+    <ion-item lines="none" no-padding *ngIf="
+        onAddForm.controls.name.hasError('pattern') &&
+        onAddForm.controls.name.touched
+      ">
+      <p class="text08">Please enter only alphabets</p>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input type="number" formControlName="mobile_no" [(ngModel)]="number" pattern="[0-9]*"></ion-input>
+    </ion-item>
+    <ion-item no-padding lines="none" *ngIf="
+        onAddForm.controls.mobile_no.hasError('required') &&
+        onAddForm.controls.mobile_no.touched
+      ">
+      <p class="text08">Please enter mobile number.</p>
+    </ion-item>
+    <ion-item lines="none" no-padding *ngIf="
+        onAddForm.controls.mobile_no.hasError('pattern') &&
+        onAddForm.controls.mobile_no.touched
+      ">
+      <p class="text08">Please enter valid mobile number.</p>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input type="email" formControlName="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item no-padding lines="none" *ngIf="
+        onAddForm.controls.email.hasError('required') &&
+        onAddForm.controls.email.touched
+      ">
+      <p class="text08">Please enter email address.</p>
+    </ion-item>
+    <ion-item lines="none" no-padding *ngIf="
+        onAddForm.controls.email.hasError('pattern') &&
+        onAddForm.controls.email.touched
+      ">
+      <p class="text08">Please enter valid email address.</p>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">Message</ion-label>
+      <ion-textarea type="text" rows="5" formControlName="message">
+      </ion-textarea>
+    </ion-item>
+    <ion-item no-padding lines="none" *ngIf="
+        onAddForm.controls.message.hasError('required') &&
+        onAddForm.controls.message.touched
+      ">
+      <p class="text08">Please enter message.</p>
+    </ion-item>
+
+    <ion-item no-padding lines="none">
+      <ion-col no-padding>
+        <ion-label>Disclaimer</ion-label>
+        <ion-item no-padding lines="none">
+          <p text-wrap class="policy-txt">
+            Information collected and used via these means is done so in
+            accordance with our
+            <a (click)="goTo('https://www.rsm.global/australia/privacy-policy')">
+              Privacy Policy.
+            </a>
+          </p>
+        </ion-item>
+      </ion-col>
+    </ion-item>
+    <ion-button expand="full" color="primary" expand="block" (click)="send()" [disabled]="!onAddForm.valid"
+      class="ion-float-right">
+      Send Message</ion-button>
+  </form>
+</ion-content>

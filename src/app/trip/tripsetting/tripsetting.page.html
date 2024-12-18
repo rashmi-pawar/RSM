@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title mode="ios">Trip setting</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="addlocationForm">
+    <div class="location-addition" *ngIf="locationShow">
+      <div class="addition-detail" padding>
+        <h1 *ngIf="locationFormStatus==0">Add new location</h1>
+        <h1 *ngIf="locationFormStatus==1">Edit location detail</h1>
+        <div class="vehicle-form">
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Enter location name</ion-label>
+              <ion-input placeholder="Enter location name" formControlName="lname" [(ngModel)]="lname"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row
+            *ngIf="addlocationForm.controls.lname.hasError('required') && addlocationForm.controls.lname.touched">
+            <ion-col size="12" no-padding>
+              <p class="text08">Sorry, field location name is required!</p>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="select-loc">
+          <ion-label>Search location by name or street</ion-label>
+          <ion-searchbar searchIcon="locate" placeholder="Current location" [(ngModel)]="autocomplete.origininput"
+            (ionInput)="updateSearchResults()" [ngModelOptions]="{standalone: true}"></ion-searchbar>
+          <div class="search-pin ion-margin-end" [hidden]="autocompleteItems1.length == 0">
+            <ion-item *ngFor="let item of autocompleteItems1" tappable (click)="selectOriginSearchResult(item)">
+              {{ item.description }}</ion-item>
+          </div>
+        </div>
+        <ion-row class="loc-btn">
+          <ion-col size="6">
+            <button type="button" class="cancle-btn"
+              (click)="locationShow = false;autocomplete.origininput = '' ">Cancel</button>
+          </ion-col>
+          <ion-col size="6">
+            <!-- <button type="button" class="save-btn" [disabled]="autocomplete.invalid" (click)="submitLocationForm()">Save</button> -->
+            <button type="button" expand="full" color="primary" expand="block" class="save-btn"
+              [ngClass]="{'disable-btn' : !addlocationForm.valid || !autocomplete.origininput }" (click)="submitLocationForm()" [disabled]="!addlocationForm.valid || !autocomplete.origininput">Save</button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+  </form>
+
+  <form [formGroup]="addVehicleForm">
+    <div class="add-new-vehicle" padding *ngIf="addVehicleShow">
+      <div class="vehicle-detail" padding>
+
+        <h1 *ngIf="vehicleFormStatus==0">Add new vehicle</h1>
+        <h1 *ngIf="vehicleFormStatus==1">Edit vehicle detail</h1>
+
+        <div class="vehicle-form">
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>Vehicle Name</ion-label>
+              <ion-input placeholder="Enter Vehicle Name" formControlName="vname"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="addVehicleForm.controls.vname.hasError('required') && addVehicleForm.controls.vname.touched">
+            <ion-col size="12" no-padding>
+              <p class="text08">Sorry, field vehicle name is required!</p>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="vehicle-form">
+          <ion-row>
+            <ion-col size="12">
+              <ion-label>License plate</ion-label>
+              <ion-input placeholder="Enter license plate" formControlName="platenumber"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngIf="addVehicleForm.controls.platenumber.hasError('required') && addVehicleForm.controls.platenumber.touched">
+            <ion-col size="12" no-padding>
+              <p class="text08">Sorry, field license plate is required!</p>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <ion-row class="loc-btn">
+          <ion-col size="6">
+            <button type="button" class="cancle-btn" (click)="addVehicleShow = false">Cancel</button>
+          </ion-col>
+          <ion-col size="6">
+            <button type="button" expand="full" color="primary" expand="block" class="save-btn"
+              [ngClass]="{'disable-btn' : !addVehicleForm.valid }" (click)="submitVehicleForm()" [disabled]="!addVehicleForm.valid">Save</button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+  </form>
+
+  <div padding>
+    <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="segmentfilter">
+      <ion-segment-button value="vehicle">
+        <ion-label>Vehicle</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="location">
+        <ion-label>Location</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="general">
+        <ion-label>Distance</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <div [ngSwitch]="segmentfilter">
+      <div class="add-vehicle" padding *ngSwitchCase="'vehicle'">
+        <ion-button color="primary" expand="full" mode="ios" (click)="addNewVehicle()">
+          <ion-icon name="add"></ion-icon>
+          Add New Vehicle
+        </ion-button>
+        <div class="add-vehicle-detail ion-padding-vertical" *ngIf="vehiclelist.length>0">
+          <ion-row class="vehicle-size" *ngFor="let list of vehiclelist">
+            <ion-col size="2" no-padding>
+              <img src="assets/icon/vehicle.png">
+            </ion-col>
+            <ion-col size="7" no-padding>
+              <h5>{{list.name}}</h5>
+              <ion-row>
+                <ion-col size="6" no-padding>
+                  <span>License plate</span>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                  <p>{{list.platenumber}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="3" no-padding>
+              <div class="edit-btn">
+                <span class="blue-color" (click)="editVehicle(list)">Edit</span>
+                <span class="red-color" (click)="deleteVehicle(list.id)">Remove</span>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        </div>
+        <div class="add-vehicle-detail ion-padding-vertical" *ngIf="!vehiclelist.length">
+          <p class="nodata">No Data Found!</p>
+        </div>
+
+      </div>
+
+      <div class="add-vehicle" padding *ngSwitchCase="'location'">
+
+        <div class="add-trip-btn" padding>
+          <ion-button color="primary" expand="full" mode="ios" (click)="addNewLocation()">
+            <ion-icon name="add"></ion-icon>
+            Add New Location
+          </ion-button>
+        </div>
+
+        <div class="location-detail" padding *ngIf="locationlist.length>0">
+          <ion-row class="location-row" *ngFor="let list of locationlist">
+            <ion-col no-padding size="1" (click)="openMapsApp(list.address)">
+              <img src="assets/icon/locate.png">
+            </ion-col>
+            <ion-col no-padding size="8">
+              <div>
+                <div>{{list.name}}</div>
+                <ion-note>{{list.address}}</ion-note>
+              </div>
+            </ion-col>
+            <ion-col no-padding size="3">
+              <div class="edit-btn">
+                <span class="blue-color" (click)="editLocation(list)">Edit</span>
+                <span class="red-color" (click)="deleteLocation(list.id)">Remove</span>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="location-detail ion-padding-vertical" *ngIf="!locationlist.length">
+          <p class="nodata">No Data Found!</p>
+        </div>
+
+      </div>
+
+      <div class="general-setting" padding *ngSwitchCase="'general'">
+        <h1><b>Distance in</b></h1>
+        <ion-list>
+          <ion-radio-group (ionChange)="selectunit(unitvalue)" [(ngModel)]="unitvalue">
+            <ion-item lines="none" no-padding>
+              <ion-label>Kilometre</ion-label>
+              <ion-radio slot="start" value="km" name="distance"></ion-radio>
+            </ion-item>
+
+            <ion-item lines="none" no-padding>
+              <ion-label>Miles</ion-label>
+              <ion-radio slot="start" value="mi" name="distance"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="triplogbook"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Trip history</ion-title>
+    <ion-buttons slot="end" class="more-btn" (click)="showfiler = true">
+      <img src="assets/icon/filter.png">
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="image-content" padding>
+    <div class="top-head">
+      <ion-row>
+        <ion-col no-padding>
+          <div class="add-new-recpt" (click)="goTo('logtrip')">
+            <p class="blue-color">
+              <ion-icon name="add"></ion-icon> &nbsp;Log manual trip
+            </p>
+          </div>
+        </ion-col>
+        <ion-col no-padding (click)="checklogin('viewreceipt','uploadtocloud')">
+          <div class="upload-recpt">
+            <p>Export and Share</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+    <div class="filter" padding *ngIf="showfiler">
+      <div class="select-filter" padding>
+        <h1 color="primary">Filters</h1>
+
+        <div class="filter-select">
+          <ion-label>Search by</ion-label>
+          <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="date"> </ion-datetime>
+        </div>
+
+        <div class="filter-btn">
+          <ion-row>
+            <ion-col size="6">
+              <button type="button" class="can-btn" (click)="cancel()">Cancel</button>
+
+            </ion-col>
+            <ion-col size="6">
+              <button type="button" class="app-btn" (click)="filerdata()">Apply</button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="trip-option" padding>
+      <ion-segment mode="md" (ionChange)="segmentChanged($event)" [(ngModel)]="segmentFilter">
+        <ion-segment-button mode="md" value="personal">
+          <p>Personal trips</p>
+        </ion-segment-button>
+        <ion-segment-button mode="md" value="buisness">
+          <p>Business trips</p>
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="segmentFilter">
+        <div class="trip-opt-detail" *ngSwitchCase="'personal'">
+          <div *ngIf="personallist.length>0">
+            <ion-row class="recpt-detail" *ngFor="let list of personallist " class="rowss">
+              <ion-col no-padding size="2">
+                <ion-checkbox color="primary" style="margin-top: 12px;" (ionChange)="selectTrip($event, list)"></ion-checkbox>
+              </ion-col>
+              <ion-col no-padding size="10" (click)="details(list)" style="padding-left: 10px;">
+                <ion-row>
+                  <ion-col no-padding size="6">
+                    <img src="/assets/icon/car.png">
+                  </ion-col>
+                  <ion-col no-padding size="6" class="right-side">
+                    <p>{{list.startdate| date : 'dd/MM/yyyy'}}<span> - {{list.starttime | date:'hh:mm aa'}} </span></p>
+                  </ion-col>
+                  <ion-col no-padding size="6">
+                    <img src="assets/icon/Oval Copy 6.png" class="oval-design">
+                  </ion-col>
+                  <ion-col no-padding size="6" class="right-side">
+                    <img src="assets/icon/Oval.png" class="oval-design">
+                  </ion-col>
+                  <ion-col no-padding size="4">
+                    <span>{{list.origin}}</span>
+                  </ion-col>
+                  <ion-col no-padding size="4" class="dark">
+                    <span>{{list.distance}}{{list.unit}}</span>
+                  </ion-col>
+                  <ion-col no-padding size="4" class="right-side">
+                    <span>{{list.destination}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-row *ngIf="personallist.length == 0">
+            <p class="nodata">No Data Found</p>
+          </ion-row>
+        </div>
+        <div class="trip-opt-detail" *ngSwitchCase="'buisness'">
+          <div *ngIf="buisnesslist.length>0">
+            <ion-row class="recpt-detail" *ngFor="let list of buisnesslist " class="rowss">
+              <ion-col no-padding size="1">
+                <ion-checkbox color="primary" style="margin-top: 12px;" (ionChange)="selectTrip($event, list)"></ion-checkbox>
+              </ion-col>
+              <ion-col no-padding size="11">
+                <ion-row (click)="details(list)" style="padding-left: 10px;">
+                  <ion-col no-padding size="6">
+                    <img src="/assets/icon/car.png">
+                  </ion-col>
+                  <ion-col no-padding size="6" class="right-side">
+                    <p>{{list.startdate| date : 'dd/MM/yyyy'}}<span> - {{list.starttime | date:'hh:mm aa'}} </span></p>
+                  </ion-col>
+                  <ion-col no-padding size="6">
+                    <img src="assets/icon/Oval Copy 6.png" class="oval-design">
+                  </ion-col>
+                  <ion-col no-padding size="6" class="right-side">
+                    <img src="assets/icon/Oval.png" class="oval-design">
+                  </ion-col>
+                  <ion-col no-padding size="4">
+                    <span>{{list.origin}}</span>
+                  </ion-col>
+                  <ion-col no-padding size="4" class="dark">
+                    <span>{{list.distance}}{{list.unit}}</span>
+                  </ion-col>
+                  <ion-col no-padding size="4" class="right-side">
+                    <span>{{list.destination}}</span>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            
+              
+            </ion-row>
+
+          </div>
+          <ion-row *ngIf="buisnesslist.length == 0">
+            <p class="nodata">No Data Found</p>
+          </ion-row>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

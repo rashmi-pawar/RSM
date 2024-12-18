@@ -1,0 +1,60 @@
+
+.register-data ion-input {
+    border-bottom: 1px solid #d8d8d8;
+}
+.log-here
+{
+    text-align: center;
+}
+.log-here p {
+    color: #2f2f2f;
+}
+.log-here span {
+    padding-left: 20px;
+}
+.forgot-pass h1
+{
+    color: #2f2f2f;
+    font-size: 24px;
+}
+
+
+@media screen and (max-width:360px)
+{
+    .register-data ion-input {
+        width : 94% ;
+    }
+}
+@media screen and (max-width:320px)
+{
+    .register-data ion-input {
+        width : 93% ;
+    }
+}
+.forgot-pass ion-icon {
+    font-size: 30px;
+}
+@media screen and (max-width:360px)
+{
+    .forgot-pass ion-icon {
+        font-size: 26px;
+    }
+    .forgot-pass h1
+{
+    font-size: 22px;
+}
+}
+@media screen and (max-width:320px)
+{
+    .forgot-pass ion-icon {
+        font-size: 24px;
+    }
+    .forgot-pass h1
+{
+    font-size: 20px;
+}
+.log-here p
+{
+    font-size: 14px;
+}
+}

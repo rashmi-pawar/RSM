@@ -1,0 +1,69 @@
+
+.register-data ion-input {
+    border-bottom: 1px solid #d8d8d8;
+}
+.register-data ion-select {
+    padding: 10px;
+    border-bottom: 1px solid #d8d8d8;
+}
+input.native-input {
+    padding-left: 10px !important;
+}
+.border-cls ion-input {
+    border-bottom: 1px solid #d8d8d8;
+}
+.bday ion-datetime {
+    border-bottom: 1px solid #d8d8d8;
+    padding-left: 0 !important;
+}
+.forgot-pass h1
+{
+    color: #2f2f2f;
+    font-size: 24px;
+}
+.log-here
+{
+    text-align: center;
+}
+.log-here p {
+    color: #2f2f2f;
+}
+.log-here span {
+    padding-left: 20px;
+}
+.forgot-pass ion-icon {
+    font-size: 30px;
+}
+@media screen and (max-width:360px)
+{
+    .forgot-pass ion-icon {
+        font-size: 26px;
+    }
+    .forgot-pass h1
+{
+    font-size: 22px;
+}
+}
+@media screen and (max-width:320px)
+{
+    .forgot-pass ion-icon {
+        font-size: 24px;
+    }
+    .forgot-pass h1
+{
+    font-size: 20px;
+}
+.log-here p
+{
+    font-size: 14px;
+}
+}
+.info-link{
+    flex: 0 0 calc(calc(11 / var(--ion-grid-columns, 12)) * 100% - 35px) !important;
+    width: calc(calc(11 / var(--ion-grid-columns, 12)) * 100% - 35px) !important;
+    max-width: calc(calc(11 / var(--ion-grid-columns, 12)) * 100%) !important;
+}
+.no-ripple{
+    --ripple-color: transparent;
+    --background-hover: transparent;
+}

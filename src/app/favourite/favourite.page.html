@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      My Favourites
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="favourites?.length">
+    <ion-list lines="none" class="calculate-list" button detail="true" detail-icon="ios-trash">
+      <ion-item *ngFor="let favourite of favourites">
+        <ion-img slot="start" [src]="favourite.icon" (click)="gotourl(favourite)" (ionError)="onImageError(favourite)"></ion-img>
+        <!-- <ion-img *ngIf="favourite.error" slot="start" src="assets/img/insight/default-rss.png"></ion-img> -->
+        <ion-label (click)="gotourl(favourite)">{{ favourite?.name }}</ion-label>
+        <ion-icon name="ios-trash" (click)="removefavourites(favourite.url)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+  <p *ngIf="favourites?.length < 1 && isProgress" style="padding: 20px;">No data found</p>
+</ion-content>

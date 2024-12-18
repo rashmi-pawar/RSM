@@ -1,0 +1,248 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu" color="medium"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="menu" style="color: #ffffff"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <div class="rsm-welcome">
+      <img class="logo" src="assets/img/home/rsm-logo.svg" />
+    </div>
+    <ion-buttons slot="end">
+      <ion-button (click)="goTo('notification')" icon-only class="notification-btn">
+        <ion-badge *ngIf="unreadNotificationCount" color="accent">{{ unreadNotificationCount }}</ion-badge>
+        <ion-icon slot="icon-only" name="notifications-outline" color="medium"></ion-icon>
+      </ion-button>
+      <ion-button (click)="goToUpdateprofile()">
+        <ion-icon slot="icon-only" name="person" color="medium"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+  <div class="first-section">
+    <div class="main-title">Welcome to the RSM Australia App</div>
+    <div class="summary">
+      <ion-row>
+        <ion-col class="first">
+          <div (click)="goTo('contactus')">
+            Ask a Question?
+          </div>
+        </ion-col>
+        <ion-col class="second" (click)="goTo('triplogbook')">
+          <div class="title">
+            KMs Logged
+          </div>
+          <div class="value">
+            {{totalDistance}}
+          </div>
+        </ion-col>
+        <ion-col class="third" (click)="goTo('viewreceipt')">
+          <div class="title">
+            Total Receipts
+          </div>
+          <div class="value">
+            {{totalReceipt}}
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div class="second-section">
+    <ion-row class="icon-section">
+      <ion-col (click)="openQRScanner()">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/icon/event-calendar.png" />
+            <div class="label">Event Sign In</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goToEvent()">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/icon/event-calendar.png" />
+            <div class="label">Events</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goTo('viewreceipt')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/home/favourites/receipt.png" />
+            <div class="label">Receipts</div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="icon-section">
+      <ion-col (click)="goTo('tax-information')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/icon/tax.png" />
+            <div class="label">Tax Rates</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goTo('calculator')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/home/favourites/calculator.png" />
+            <div class="label">Calculators</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goTo('triplogbook')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/home/favourites/logbook.png" />
+            <div class="label">LogBook</div>
+          </div>
+        </div>
+      </ion-col>  
+    </ion-row>
+    <ion-row class="icon-section">
+      <ion-col (click)="goTo('investment-information')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/payment.png" />
+            <div class="label">Market News</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="gotourl('https://experience.rsm.com.au/preference-center')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/accounting.png" />
+            <div class="label">Preferences</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goTo('rss-feed')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/img/insight/default-rss.png" />
+            <div class="label">Ideas and Insights</div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="icon-section">
+      <ion-col (click)="goTo('contactus')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/icon/phone-ringing.png" />
+            <div class="label">Contact Us</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col (click)="goTo('favourite')">
+        <div class="main">
+          <div class="sub">
+            <img class="icon" src="assets/icon/Icon-favourite.png" />
+            <div class="label">My Favourites</div>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </div>
+  <div class="banner-section">
+<!--    <img class="banner-img" (click)="gotourl(banner.url)" [src]="banner.full_path" />-->
+    <ion-slides pager="true" #slides [options]="mainSlideOpts">
+      <ion-slide *ngFor="let s of bannerList">
+<!--        <ion-segment-button mode="md" (click)="gotourl(s.url)">-->
+          <img src="{{ s.full_path }}" (click)="gotourl(s.url)" />
+<!--        </ion-segment-button>-->
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+<!--<ion-content no-padding>
+  <div class="main-slider">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1" (click)="prevSlide()">
+          <span class="slider-nav arrow-prev">
+            <div class="prev-icon-custom custon-nav"></div>
+          </span>
+        </ion-col>
+        <ion-col size="10">
+          <ion-slides pager="true" #slides [options]="mainSlideOpts">
+            <ion-slide *ngFor="let s of sliderOne.slidesItems">
+              <ion-segment-button mode="md" (click)="goTo(s.link)">
+                <img src="{{ s.image }}" />
+                <ion-label>{{ s.title }}</ion-label>
+              </ion-segment-button>
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+        <ion-col size="1" (click)="nextSlide()">
+          <span class="slider-nav arrow-next">
+            <div class="next-icon-custom custon-nav"></div>
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="favourites">
+    <h2 class="title">Favourites</h2>
+
+    <ion-segment scrollable>
+      <ion-segment-button mode="md" *ngFor="let favourite of favourites">
+        <ng-template [ngIf]="favourite.name">
+          <div (click)="goTo(favourite.url)">
+            <ion-img class="fav-list" src="{{ favourite.icon }}"></ion-img>
+            <ion-label text-wrap>{{ favourite.name }}</ion-label>
+          </div>
+        </ng-template>
+
+        <ng-template [ngIf]="!favourite.name">
+          <div (click)="presentFavAlert()">
+            <ion-img class="fav-deafult-list" src="{{ favourite.icon }}"></ion-img>
+            <ion-label text-wrap>{{ favourite.name }}</ion-label>
+          </div>
+        </ng-template>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="have-a-question">
+    <img (click)="goTo('sendmessage')" class="banner" src="assets/img/home/have-a-question.png" />
+  </div>
+
+  <div class="page-links">
+    <ion-list class="list-box" (click)="gotourl('https://www.rsm.global/australia/coronavirus-resources')">
+      <ion-item class="list-item" lines="none">
+        <ion-img slot="start" src="assets/img/information.png" class="icon-img"></ion-img>
+        <ion-label class="item-label">
+          <h2 class="title">Pandemic Resources</h2>
+          <p>Click Here <img src="assets/img/right-arrow.png" height="10" /></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list class="list-box" (click)="gotourl(eventUrl)">
+      <ion-item class="list-item" lines="none">
+        <ion-img slot="start" src="assets/img/date.png" class="icon-img"></ion-img>
+        <ion-label class="item-label">
+          <h2 class="title">Upcoming Events</h2>
+          <p>Click Here <img src="assets/img/right-arrow.png" height="10" /></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list class="list-box" (click)="goTo('rss-feed')">
+      <ion-item class="list-item" lines="none">
+        <ion-img slot="start" src="assets/img/tools-and-utensils.png" class="icon-img"></ion-img>
+        <ion-label class="item-label">
+          <h2 class="title">RSM Insights</h2>
+          <p>Click Here <img src="assets/img/right-arrow.png" height="10" /></p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>-->

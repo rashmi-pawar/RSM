@@ -1,0 +1,43 @@
+{
+  "name": "cordova-sqlcipher-adapter",
+  "version": "0.5.4",
+  "description": "SQLCipher database adapter for PhoneGap/Cordova, based on cordova-sqlite-storage",
+  "cordova": {
+    "id": "cordova-sqlcipher-adapter",
+    "platforms": [
+      "android",
+      "ios",
+      "osx",
+      "windows"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brodybits/cordova-sqlcipher-adapter.git"
+  },
+  "keywords": [
+    "sqlite",
+    "sqlcipher",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-osx",
+    "cordova-windows"
+  ],
+  "author": "various",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brodybits/cordova-sqlcipher-adapter/issues"
+  },
+  "homepage": "https://github.com/brodybits/cordova-sqlcipher-adapter",
+  "scripts": {
+    "clean-spec": "rm -rf spec/[mnp]* && git cl spec/config.xml spec/package.json && git status --ignored",
+    "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
+    "prepare-spec": "node scripts/prepareSpec.js"
+  },
+  "devDependencies": {
+    "coffeescript": "1",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^8.1.0"
+  }
+}

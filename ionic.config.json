@@ -1,0 +1,8 @@
+{
+  "name": "RSM",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
+ 

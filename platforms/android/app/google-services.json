@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1031905316006",
+    "firebase_url": "https://fir-rsmapp.firebaseio.com",
+    "project_id": "fir-rsmapp",
+    "storage_bucket": "fir-rsmapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031905316006:android:bd5d8c0bc5b0e993",
+        "android_client_info": {
+          "package_name": "io.rsm.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031905316006-gagtpuvf4997e29m41tderlj32ieou30.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.rsm.starter",
+            "certificate_hash": "da1db178f1c35549a5e81b35255fc7ce9cbc9a24"
+          }
+        },
+        {
+          "client_id": "1031905316006-8t2gtdgsu86thlmolsvdhsvbl4pff33s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDirTlw5FT5L_wrHNRJ439uhS057hWxxyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031905316006-8t2gtdgsu86thlmolsvdhsvbl4pff33s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

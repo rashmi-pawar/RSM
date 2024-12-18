@@ -1,0 +1,37 @@
+.no-events{
+  padding: 30px;
+}
+.receipt-add {
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  padding-top: 5px;
+  padding-right: 5px;
+}
+
+
+.pop-list-detail
+{
+  width: 170px;
+  background-color: white;
+  right: 0;
+  float: right;
+  border-radius: 5px;
+  
+}
+
+.pop-list-detail ul {
+  padding-left: 0px;
+}
+.pop-list-detail ul li {
+  list-style: none;
+  line-height: 25px;
+  color: #62666B;
+  font-size: 18px;
+  padding: 5px 0px;
+}
+.notification-date{
+  text-align: right;
+}

@@ -1,0 +1,248 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="{{back}}"></ion-back-button>
+        </ion-buttons>
+        <ion-title mode="ios">Log Trip</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="addVehicleForm">
+        <div class="add-new-vehicle" padding *ngIf="showvehicle">
+            <div class="vehicle-detail" padding>
+                <h1>Add Vehicle</h1>
+                <div class="vehicle-form">
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-label>Vehicle Name</ion-label>
+                            <ion-input placeholder="Enter Vehicle Name" formControlName="vname"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row
+                            *ngIf="addVehicleForm.controls.vname.hasError('required') && addVehicleForm.controls.vname.touched">
+                        <ion-col size="12" no-padding>
+                            <p class="text08">Sorry, field vehicle name is required!</p>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <div class="vehicle-form">
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-label>License plate</ion-label>
+                            <ion-input placeholder="Enter license plate" formControlName="platenumber"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <ion-row class="loc-btn">
+                    <ion-col size="6">
+                        <button type="button" class="cancle-btn" (click)="startTripAgain()">Cancel</button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <button type="button" expand="full" color="primary" expand="block" class="save-btn"
+                                (click)="addnewvehicle()" [disabled]="!addVehicleForm.valid">Save</button>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="image-content" padding>
+        <div>
+            <ion-row class="search-loc">
+                <ion-col size="1" no-padding>
+                    <ion-icon name="pin"></ion-icon>
+                </ion-col>
+                <ion-col size="11" no-padding>
+                    <ion-searchbar searchIcon="" placeholder="Enter start location"
+                                   [(ngModel)]="autocomplete.origininput" (ionInput)="updateSearchResults()" class="start-search">
+                    </ion-searchbar>
+                </ion-col>
+            </ion-row>
+            <div class="search-pin ion-margin-end" [hidden]="autocompleteItems1.length == 0">
+                <p *ngFor="let item of autocompleteItems1" (click)="selectOriginSearchResult(item)">
+                    {{ item.description }}
+                </p>
+            </div>
+
+            <ion-row class="search-loc">
+                <ion-col size="1" no-padding>
+                    <ion-icon name="navigate" color="primary" mode="md"></ion-icon>
+                </ion-col>
+                <ion-col size="11" no-padding>
+                    <ion-searchbar searchIcon="" placeholder="Where to?" [(ngModel)]="autocomplete.destinationinput"
+                                   (ionInput)="updateSearchDestResults()" class="start-search">
+                    </ion-searchbar>
+                </ion-col>
+            </ion-row>
+
+            <div class="search-pin ion-margin-end" [hidden]="autocompleteItems.length == 0">
+                <p *ngFor="let item of autocompleteItems" (click)="selectDestSearchResult(item)">
+                    {{ item.description }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <form [formGroup]="onAddForm">
+        <div class="start-time" padding *ngIf="showdiv">
+            <ion-row>
+                <ion-col size="6" style="text-align: center;">
+                    <ion-label>Start trip photo</ion-label>
+                    <br />
+                    <div (click)="selectImage('start')" style="margin-top: 10px;height: 25vh;">
+                        <img class="image-size" src="../../../assets/icon/picture.png" *ngIf="!viewImageStart">
+                        <img class="add-image-auto" [src]="getImgContent(viewImageStart)" (error)="startErrorImage()" #img *ngIf="viewImageStart">
+                    </div>
+                </ion-col>
+                <ion-col size="6" style="text-align: center;">
+                    <ion-label>End trip photo</ion-label>
+                    <div (click)="selectImage('end')" style="margin-top: 10px;height: 25vh;">
+                        <img class="image-size" src="../../../assets/icon/picture.png" *ngIf="!viewImageEnd">
+                        <img class="add-image-auto" [src]="getImgContent(viewImageEnd)" (error)="endErrorImage()" #img1 *ngIf="viewImageEnd">
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-label>Start Date</ion-label>
+                    <ion-datetime display-format="DD/MM/YYYY" placeholder="DD/MM/YYYY" formControlName="startdate"
+                                  [(ngModel)]="tripstartdate">
+                    </ion-datetime>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label>Start Time</ion-label>
+                    <ion-datetime display-format="HH:mm" placeholder="HH:mm" formControlName="starttime"></ion-datetime>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.startdate.hasError('required') &&
+                        onAddForm.controls.startdate.touched ">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field start date is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.starttime.hasError('required') &&
+                        onAddForm.controls.starttime.touched">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field start time is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-label>End Date</ion-label>
+                    <ion-datetime display-format="DD/MM/YYYY" placeholder="DD/MM/YYYY" formControlName="enddate"
+                                  [(ngModel)]="tripenddate">
+                    </ion-datetime>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label>End Time</ion-label>
+                    <ion-datetime display-format="HH:mm" placeholder="HH:mm" formControlName="endtime"></ion-datetime>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.enddate.hasError('required') &&
+                        onAddForm.controls.enddate.touched ">
+                <ion-col size="12">
+                    <p class="text08">Sorry, field end date is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.endtime.hasError('required') &&
+                    onAddForm.controls.endtime.touched">
+                <ion-col size="12">
+                    <p class="text08">Sorry, field end time is required!</p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                    <ion-label>Approximate Distance</ion-label>
+                    <ion-input type="number" placeholder="20" formControlName="distance" [(ngModel)]="distance"></ion-input>
+                </ion-col>
+
+                <ion-col size="6">
+                    <ion-label>Distance Unit</ion-label>
+                    <ion-select formControlName="unit" placeholder="km" [(ngModel)]="unit">
+                        <ion-select-option value="km">KM</ion-select-option>
+                        <ion-select-option value="mi">MI</ion-select-option>
+                    </ion-select>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.distance.hasError('required') &&
+                        onAddForm.controls.distance.touched">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field distance is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="onAddForm.controls.unit.hasError('required') &&
+                onAddForm.controls.unit.touched ">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field unit is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="5">
+                    <ion-label>Trip Category</ion-label>
+                    <ion-select formControlName="vehicle_type">
+                        <ion-select-option value="business" selected>Business</ion-select-option>
+                        <ion-select-option value="personal">Personal</ion-select-option>
+                    </ion-select>
+                </ion-col>
+                <ion-col size="5">
+                    <ion-label>Vehicle Name</ion-label>
+                    <ion-select formControlName="vehicle_name" *ngIf="vehiclelist.length > 0" [(ngModel)]="vehicleName">
+                        <ion-select-option value="" *ngIf="!vehiclelist?.length">Please create vehicle
+                        </ion-select-option>
+                        <ion-select-option *ngFor="let vtype of vehiclelist" value="{{ vtype.platenumber }}">
+                            <ion-icon name="logo-model-s" color="primary"></ion-icon>
+                            {{ vtype.name }}({{ vtype.platenumber }})
+                        </ion-select-option>
+                    </ion-select>
+                </ion-col>
+
+                <ion-col size="2" no-padding>
+                    <ion-icon name="add" (click)="presentAlertPrompt()" class="add-icn"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row
+                    *ngIf="onAddForm.controls.vehicle_name.hasError('required') && onAddForm.controls.vehicle_name.touched">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field vehicle name is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-row
+                    *ngIf="onAddForm.controls.vehicle_type.hasError('required') && onAddForm.controls.vehicle_type.touched">
+                <ion-col size="12" no-padding>
+                    <p class="text08">Sorry, field trip category is required!</p>
+                </ion-col>
+            </ion-row>
+            <ion-textarea placeholder="Write something about this trip..." formControlName="notes"></ion-textarea>
+        </div>
+
+        <div class="botm-btn" *ngIf="showdiv">
+            <ion-row>
+                <ion-col size="6" (click)="cancel()">
+                    <ion-button color="medium" class="ion-float-right" mode="ios">Cancel</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button expand="full" color="primary" expand="block" (click)="validate()" mode="ios">
+                        <span *ngIf="checkedit != 1">Add Trip</span>
+                        <span *ngIf="checkedit == 1">Save Trip</span>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+
+    </form>
+    <div #map id="map" [ngStyle]="{ display: !showdiv ? 'block' : 'none' }"></div>
+
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-button  color="primary" expand="block" mode="ios" *ngIf="showButton && !showdiv"
+                 (click)="showAdd()">Continue to add trip</ion-button>
+</ion-footer>

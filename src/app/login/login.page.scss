@@ -1,0 +1,111 @@
+.account-data h6
+{
+    margin: 10px 0 25px;
+    color: #62666A;
+}
+.account-data span {
+    color: #009cde;
+}
+.forgot-pass h1
+{
+    color: #2f2f2f;
+    font-size: 24px;
+    margin-top: 0px;
+}
+.for-pass
+{
+    display: inline-block;
+    float: right;
+    color: #009CDE;
+    text-align: right;
+    margin:10px 0px 22px;
+    padding-right: 2%;
+}
+.social h5 {
+    text-align: center;
+    font-size: 16px;
+    color: #878C8E;
+}
+ion-row.text-center {
+    text-align: center;
+}
+.log-here
+{
+    text-align: center;
+}
+.log-here p {
+    color: #2f2f2f;
+}
+.log-here span {
+    padding-left: 20px;
+}
+
+
+
+.forgot-pass ion-icon {
+    font-size: 25px;
+}
+button.fb-btn {
+    background: #1b3771;
+    color: #fff;
+    height: 60px;
+    width: 95%;
+    border-radius: 5px;
+}
+button.gogle {
+    background: #b83222;
+    color: #fff;
+    border-radius: 5px;
+    height: 60px;
+    font-size: 22px;
+    width: 95%;
+}
+button.apple {
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    height: 60px;
+    font-size: 22px;
+    width: 95%;
+}
+button.azure {
+    background: #0078d4;
+    color: #fff;
+    border-radius: 5px;
+    height: 60px;
+    font-size: 22px;
+    width: 97.5%;
+    margin-top: 2.5%;
+}
+.rsm-welcome {
+    text-align: center;
+    margin-right: 48px;
+    margin-top: 12px;
+  .logo {
+    height: 48px;
+  }
+}
+@media screen and (max-width:360px)
+{
+    .forgot-pass ion-icon {
+        font-size: 26px;
+    }
+    .forgot-pass h1
+{
+    font-size: 22px;
+}
+}
+@media screen and (max-width:320px)
+{
+    .forgot-pass ion-icon {
+        font-size: 24px;
+    }
+    .forgot-pass h1
+{
+    font-size: 20px;
+}
+.log-here p
+{
+    font-size: 14px;
+}
+}

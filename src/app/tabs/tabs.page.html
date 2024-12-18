@@ -1,0 +1,20 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="color-change">
+    <ion-tab-button tab="dashboard">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="tools">
+      <ion-icon name="folder"></ion-icon>
+      <ion-label>Tools & Calculators</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="findus" (click)="goTo('findus')">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>Find us</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="openMenu()">
+      <ion-icon name="more"></ion-icon>
+      <ion-label>More</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

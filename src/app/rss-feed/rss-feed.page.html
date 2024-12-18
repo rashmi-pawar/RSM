@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      RSS Feed
+    </ion-title>
+    <ion-buttons slot="end" class="heart-btn">
+      <ion-icon name="heart" (click)="addToFavourites('RSS Feed', 'rss-feed')" *ngIf="isFav == false">
+      </ion-icon>
+      <ion-icon name="heart" (click)="removefavourites('rss-feed')" *ngIf="isFav == true" style="color: red">
+      </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="feeds?.length">
+    <ion-list lines="none" class="calculate-list">
+      <ion-item *ngFor="let feed of feeds" (click)="gotourl(feed)">
+        <ion-img *ngIf="!feed.error" slot="start" src="assets/img/insight/{{feed.slug}}.png" (ionError)="onImageError(feed)"></ion-img>
+        <ion-img *ngIf="feed.error" slot="start" src="assets/img/insight/default-rss.png"></ion-img>
+        <ion-label>{{ feed?.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <p *ngIf="feeds?.length < 1 && isProgress">No data found</p>
+</ion-content>

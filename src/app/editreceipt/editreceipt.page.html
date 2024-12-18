@@ -1,0 +1,188 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="receiptdetail"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Receipt</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="failure" padding *ngIf="error" (click)="skip()">
+    <div class="fail-detail" padding>
+      <img src="../../assets/img/EmptyState2.png">
+      <h4>Failed adding new receipt.</h4>
+      <p>Cannot add new receipt.<br>
+        Please try again</p>
+    </div>
+  </div>
+
+  <div class="addition" padding *ngIf="uploadcamera == true">
+    <div class="add-detail" padding>
+      <div>
+        <span class="pull-right" (click)="closeUploadCamera()">X</span>
+        <h4>Upload from</h4>
+        <span>Select option</span>
+      </div>
+      <div class="camera-cap" (click)="select_image('camera')">
+        <img src="assets/icon/camera.png">
+        <span>Capture from camera</span>
+      </div>
+      <div class="gallery-cap" (click)="select_image('gallery')">
+        <img src="assets/icon/gallery.png">
+        <span>Upload from gallery</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="success" padding id="success">
+    <div class="success-detail">
+
+      <img src="assets/img/photocopy2.png" *ngIf="!viewImage">
+      <img [src]="getImgContent(viewImage)" *ngIf="viewImage"
+        onerror="this.onerror=null;this.src='../../assets/img/photocopy2.png';">
+
+      <p>You have successfully updated<br /> a receipt</p>
+
+      <ion-row class="success-btn">
+        <ion-col no-padding size="12" (click)="skip()">
+          <p>Ok</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+  <div padding>
+    <div class="add-image" padding (click)="presentActionSheet()">
+      <ion-icon name="create"></ion-icon>
+      <img src="../../assets/icon/picture.png" *ngIf="!viewImage">
+      <img class="add-image-auto" [src]="getImgContent(viewImage)" *ngIf="viewImage"
+        onerror="this.onerror=null;this.src='../../assets/img/photocopy2.png';">
+
+    </div>
+    <div class="error-message">{{selectImageError}}</div>
+    <form [formGroup]="onAddForm">
+      <div class="add-receipt-detail">
+
+        <label for="amount">Enter Amount</label>
+        <input type="number" placeholder="Amount($)" formControlName="amount" (keyup)="totalgst($event.target)"
+          [(ngModel)]="amount">
+        <ion-item no-padding lines="none"
+          *ngIf="onAddForm.controls.amount.hasError('required') && onAddForm.controls.amount.touched">
+          <p class="text08"> Please enter amount.</p>
+        </ion-item>
+
+        <label for="gstamount">Enter GST amount</label>
+        <input type="number" placeholder="Amount($)" formControlName="gstamount" [(ngModel)]="gstamount">
+
+        <ion-item no-padding lines="none"
+          *ngIf="onAddForm.controls.gstamount.hasError('required') && onAddForm.controls.gstamount.touched">
+          <p class="text08"> Please enter GST amount.</p>
+        </ion-item>
+
+        <label for="date">Date</label>
+        <ion-datetime display-format="DD/MM/YYYY" placeholder="Select Date" formControlName="date" [(ngModel)]="date">
+        </ion-datetime>
+
+        <ion-item no-padding lines="none"
+          *ngIf="onAddForm.controls.date.hasError('required') && onAddForm.controls.date.touched">
+          <p class="text08"> Please slect date.</p>
+        </ion-item>
+
+        <label for="notes">Notes</label>
+        <textarea placeholder="Description of expense" formControlName="description"
+          [(ngModel)]="description"></textarea>
+
+        <div class="toggle-content">
+          <label for="claim" class="togle">Is this 100% claimable?</label>
+          <ion-toggle color="primary" formControlName="claimable" (ionChange)="claimcheck()" [(ngModel)]="claimable">
+          </ion-toggle>
+        </div>
+
+        <div class="tax-return"
+          [style.display]="(taxClaimType == 'percentage' && taxClaimValue == 100)? 'none' : 'block' ">
+          <p>What can you claim your tax return?</p>
+          <ion-row>
+            <ion-col no-padding size="5">
+              <input type="number" placeholder="Amount(%)" formControlName="gstamountper"
+                (keyup)="claimtaxcheck($event.target)" [(ngModel)]="gstamountper">
+            </ion-col>
+            <ion-col no-padding size="2">
+              <div class="text-or">
+                <span>OR</span>
+              </div>
+            </ion-col>
+            <ion-col no-padding size="5">
+              <input type="number" placeholder="Amount($)" formControlName="gstamountdol"
+                (keyup)="claimtaxcheck1($event.target)" [(ngModel)]="gstamountdol">
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="select-category">
+          <label for="select">Expense Category &nbsp; <ion-icon name="information-circle-outline"
+              (click)="presentModal()" style="vertical-align: bottom;
+            font-size: 18px;"></ion-icon></label>
+          <ion-select formControlName="expenseType" [(ngModel)]="expenseType">
+            <ion-select-option value="" disabled selected>Select Expense Type</ion-select-option>
+            <ion-select-option value="Cost of Goods Bought">Cost of Goods Bought</ion-select-option>
+            <ion-select-option value="CIS Payments to Subcontractors">CIS Payments to Subcontractors</ion-select-option>
+            <ion-select-option value="Staff Costs">Staff Costs</ion-select-option>
+            <ion-select-option value="Travel Costs">Travel Costs</ion-select-option>
+            <ion-select-option value="Motor Expenses">Motor Expenses</ion-select-option>
+            <ion-select-option value="Premises Running Costs">Premises Running Costs</ion-select-option>
+            <ion-select-option value="Phone Charges">Phone Charges</ion-select-option>
+            <ion-select-option value="Maintenance Cost">Maintenance Cost</ion-select-option>
+            <ion-select-option value="Admin Costs">Admin Costs</ion-select-option>
+            <ion-select-option value="Business Entertainment Costs">Business Entertainment Costs</ion-select-option>
+            <ion-select-option value="Advertising Costs">Advertising Costs</ion-select-option>
+            <ion-select-option value="Financial Charges">Financial Charges</ion-select-option>
+            <ion-select-option value="Bad Debt">Bad Debt</ion-select-option>
+            <ion-select-option value="Professional Fees">Professional Fees</ion-select-option>
+            <ion-select-option value="Depreciation">Depreciation</ion-select-option>
+            <ion-select-option value="Other">Other</ion-select-option>
+            <ion-select-option value="To Review">To Review</ion-select-option>
+          </ion-select>
+
+          <ion-item lines="none" no-padding
+            *ngIf="onAddForm.controls.expenseType.hasError('required') && onAddForm.controls.expenseType.touched">
+            <p class="text08"> Please select expense category.</p>
+          </ion-item>
+        </div>
+
+        <div class="payment-category">
+          <label for="select">payment method</label>
+          <ion-select formControlName="paymentType" [(ngModel)]="paymentType">
+            <ion-select-option value="" disabled selected>Select payment Method</ion-select-option>
+            <ion-select-option value="Personal Cash">Personal Cash</ion-select-option>
+            <ion-select-option value="Business Cash">Business Cash</ion-select-option>
+            <ion-select-option value="Personal Bank Transfer">Personal Bank Transfer</ion-select-option>
+            <ion-select-option value="Business Bank Transfer">Business Bank Transfer</ion-select-option>
+            <ion-select-option value="Personal Debit Card">Personal Debit Card</ion-select-option>
+            <ion-select-option value="Personal Credit Card">Personal Credit Card</ion-select-option>
+            <ion-select-option value="Business Debit Card">Business Debit Card</ion-select-option>
+            <ion-select-option value="Business Credit Card">Business Credit Card</ion-select-option>
+          </ion-select>
+          <ion-item lines="none" no-padding
+            *ngIf="onAddForm.controls.paymentType.hasError('required') && onAddForm.controls.paymentType.touched">
+            <p class="text08"> Please select payment method.</p>
+          </ion-item>
+        </div>
+
+        <div class="botm-btn">
+          <ion-row>
+            <ion-col size="6" (click)="cancel()">
+              <ion-button color="medium" class="ion-float-right" mode="ios">Cancel</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button expand="full" color="primary" expand="block" (click)="checkfield()"
+                [disabled]="!onAddForm.valid || checkamountbit == 1" mode="ios">Save Receipt
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</ion-content>

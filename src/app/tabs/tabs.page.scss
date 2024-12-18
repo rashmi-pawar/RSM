@@ -1,0 +1,47 @@
+.color-change ion-icon
+{
+    color: #d8d8d8;
+}
+.right-side p {
+    color: #2f2f2f !important;
+}
+
+.current-add h4 {
+    color: #353A41;
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.current-add p
+{
+    margin: 0px;
+    font-size: 12px;
+}
+.current-add h5
+{
+    margin: 0px;
+    font-size: 16px;
+}
+.current-add span
+{
+    float: right;
+    font-size: 15px;
+}
+.color-change .tab-selected {
+    border-bottom: 3px solid #009CDE;
+}
+
+
+.color-change .tab-selected ion-icon {
+    color: #009CDE !important;
+}
+.current-add {
+    padding: 20px 0px;
+}
+
+ion-tabs{
+    ion-label {
+        font-size: 10px !important;
+        color: #878C8E !important;
+    }
+}

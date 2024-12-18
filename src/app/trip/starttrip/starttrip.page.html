@@ -1,0 +1,186 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tripsetting"></ion-back-button>
+        </ion-buttons>
+        <ion-title mode="ios">Start Trip</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <form [formGroup]="addVehicleForm">
+        <div class="add-new-vehicle" padding *ngIf="showvehicle">
+            <div class="vehicle-detail" padding>
+                <h1>Add Vehicle</h1>
+                <div class="vehicle-form">
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-label>Vehicle Name</ion-label>
+                            <ion-input placeholder="Enter Vehicle Name" formControlName="vname"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row
+                        *ngIf="addVehicleForm.controls.vname.hasError('required') && addVehicleForm.controls.vname.touched">
+                        <ion-col size="12" no-padding>
+                            <p class="text08">Sorry, field vehicle name is required!</p>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <div class="vehicle-form">
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-label>License plate</ion-label>
+                            <ion-input placeholder="Enter license plate" formControlName="platenumber"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <ion-row class="loc-btn">
+                    <ion-col size="6">
+                        <button type="button" class="cancle-btn" (click)="startTripAgain()">Cancel</button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <button type="button" expand="full" color="primary" expand="block" class="save-btn"
+                            (click)="addnewvehicle()" [disabled]="!addVehicleForm.valid">Save</button>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+        </div>
+    </form>
+
+    <div #map1 id="map1" style="position: inherit;
+  overflow: visible;"></div>
+
+    <form [formGroup]="onAddForm">
+        <div class="trip-time" padding>
+
+            <div class="start-trip-time">
+
+                <div class="recording" *ngIf="starttracking == 1">
+                    <ion-row>
+                        <ion-col size="12" no-padding>
+                            <ion-icon name="locate"></ion-icon>
+                            <ion-label>Recording trip...</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <div class="time-dist">
+                    <ion-row>
+                        <ion-col size="6" no-padding class="border-rite" *ngIf="starttracking == 0">
+                            <p><span>Time:</span> &nbsp;{{totalTime}}</p>
+                        </ion-col>
+                        <ion-col size="6" no-padding *ngIf="starttracking == 0">
+                            <p><span>Distance:</span>&nbsp;{{distance}} {{unit}}</p>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <div class="trip-end" padding>
+                    <ion-row class="start-date">
+                        <ion-col size="2" no-padding>
+                            <img src="assets/icon/vehicle.png">
+                        </ion-col>
+                        <ion-col size="7" no-padding>
+                            <p>{{autocomplete.origininput}}
+                            </p>
+
+                        </ion-col>
+                        <ion-col size="3" no-padding>
+                            <button type="button" class="end-btn" (click)="stopLiveTracking()"
+                                *ngIf="starttracking ==1">End trip</button>
+                        </ion-col>
+                    </ion-row>
+                    <div class="time-record">
+                        <ion-row>
+                            <ion-col size="6" style="text-align: center;">
+                                <ion-label>Start trip photo</ion-label>
+                                <br />
+                                <div (click)="selectImage('start')" style="margin-top: 10px;height: 25vh;">
+                                    <img class="image-size" src="../../../assets/icon/picture.png" *ngIf="!viewImageStart">
+                                    <img class="add-image-auto" [src]="getImgContent(viewImageStart)" *ngIf="viewImageStart">
+                                </div>
+                            </ion-col>
+                            <ion-col size="6" style="text-align: center;">
+                                <ion-label>End trip photo</ion-label>
+                                <div (click)="selectImage('end')" style="margin-top: 10px;height: 25vh;">
+                                    <img class="image-size" src="../../../assets/icon/picture.png" *ngIf="!viewImageEnd">
+                                    <img class="add-image-auto" [src]="getImgContent(viewImageEnd)" *ngIf="viewImageEnd">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col size="5" no-padding>
+                                <ion-label>Date</ion-label>
+                                <p> {{onAddForm.value.startdate | date: 'dd/MM/yyyy'}}</p>
+                            </ion-col>
+                            <ion-col size="4" no-padding>
+                                <ion-label>Start Time</ion-label>
+                                <p> {{onAddForm.value.starttime | date: 'HH:mm'}}</p>
+                            </ion-col>
+                            <ion-col size="3" no-padding>
+                                <ion-label>End Time</ion-label>
+                                <p *ngIf="starttracking==1"> Record...</p>
+                                <p *ngIf="starttracking==0"> {{endtime | date:'HH:mm'}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                    <div class="trip-type ion-padding-vertical">
+                        <ion-row>
+                            <ion-col size="5">
+                                <ion-label aria-required="true">Trip Category *</ion-label>
+                                <ion-select formControlName="vehicle_type" required aria-required="required">
+                                    <ion-select-option value="business" selected>Business</ion-select-option>
+                                    <ion-select-option value="personal">Personal</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                            <ion-col size="5">
+                                <ion-label>Vehicle Name *</ion-label>
+                                <ion-select formControlName="vehicle_name" [(ngModel)]="vehicleName">
+                                    <ion-select-option value="" *ngIf="!vehiclelist?.length">Please create vehicle
+                                    </ion-select-option>
+                                    <ion-select-option *ngFor="let vtype of vehiclelist " value="{{vtype.platenumber}}">
+                                        <ion-icon name="logo-model-s" color="primary"></ion-icon>
+                                        {{vtype.name}}({{vtype.platenumber}})
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                            <ion-col size="2" no-padding>
+                                <ion-icon name="add" (click)="showvehicle = true" class="add-icn"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row
+                            *ngIf="onAddForm.controls.vehicle_name.hasError('required') && isFormSubmit">
+                            <ion-col size="12" no-padding>
+                                <p class="text08">Sorry, field vehicle name is required!</p>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row
+                            *ngIf="onAddForm.controls.vehicle_type.hasError('required') && isFormSubmit">
+                            <ion-col size="12" no-padding>
+                                <p class="text08">Sorry, field trip category is required!</p>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                    <ion-textarea placeholder="Write something about this trip..." class="about-trip"
+                        formControlName="notes">
+                    </ion-textarea>
+                    <ion-item no-padding lines="none"
+                        *ngIf="onAddForm.controls.notes.hasError('required') && isFormSubmit">
+                        <p class="text08">Sorry, field trip category is required!</p>
+                    </ion-item>
+                    <div class="record-btn">
+                        <ion-button color="primary" expand="block" *ngIf="starttracking ==0" (click)="finalSave()"
+                            >Save & Continue
+                        </ion-button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+</ion-content>

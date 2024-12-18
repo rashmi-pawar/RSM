@@ -1,0 +1,79 @@
+.trip-add-page h5{
+    margin: 14px 0px 0px;
+    color: #2f2f2f;
+}
+.date-design ion-datetime
+{
+    border: 1px solid #d5d5d5;
+    padding-left: 10px;
+    margin-top: 7px;
+}
+button.add-vehicle-btn {
+    background: #009cde;
+    color: #fff;
+    margin-top: 25px;
+    padding: 12px 0px;
+    width: 100%;
+}
+.trip-note ion-textarea
+{
+    border: 1px solid #d5d5d5;
+    margin-top: 6px;
+}
+ion-item
+{
+    margin-bottom: 10px;
+}
+button.add-vehicle-btn ion-icon{
+    vertical-align: bottom;
+    }
+
+
+
+
+
+@media only screen and (max-width: 414px) 
+{
+    button.add-vehicle-btn {
+        
+        margin-top: 40px;
+       
+    }
+
+}
+@media only screen and (max-width: 411px) 
+{
+    button.add-vehicle-btn {
+        
+        margin-top: 25px;
+       
+    }
+
+}
+@media only screen and (max-width: 375px) 
+{
+    button.add-vehicle-btn {
+        
+        margin-top: 40px;
+       
+    }
+
+}
+@media only screen and (max-width: 360px) 
+{
+    button.add-vehicle-btn {
+        
+        margin-top: 25px;
+       
+    }
+
+}
+@media only screen and (max-width: 320px) 
+{
+    button.add-vehicle-btn {
+        
+        margin-top: 39px;
+       
+    }
+
+}

@@ -1,0 +1,71 @@
+#map1 {
+    position: unset !important;
+}
+
+ion-searchbar {
+    .searchbar-input-container {
+        border: none !important;
+        background: #fff  !important;
+    }
+}
+
+.search-content {
+    z-index: 2;
+    background: #fff;
+    position: relative;
+    width: 100%;
+    border-radius: 6px !important;
+    .list {
+        border-radius: 6px !important;
+        margin: 10px;
+    }
+    ion-note {
+        font-size: 10px !important;
+    }
+    ion-content {
+        --ion-background-color: #fff;
+    }
+    ion-item {
+        --ion-background-color: #fafafa;
+        padding: 1px;
+    }
+    ion-label {
+        font-size: 15px !important;
+        color: #62666b !important;
+    }
+}
+
+
+.marker-box {
+    z-index: 1;
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    overflow: scroll;
+    margin: 0px 0px 0px 0px;
+    
+    ion-note{
+        font-size: 8px !important;
+        color: #62666b !important; 
+        text-align: center;
+        margin-left: 5px !important;
+    }
+
+    ion-label {
+        font-size: 12px !important;
+        color: #62666b !important;
+    }
+    .pin{
+        margin-left: 10px !important;
+    }
+    ion-col{
+        padding: 2px!important;
+    }
+    ion-icon{
+        padding: 2px!important;
+    }
+}

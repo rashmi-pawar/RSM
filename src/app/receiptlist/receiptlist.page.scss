@@ -1,0 +1,168 @@
+.more-btn ion-icon
+{
+    margin-right: 10px;
+}
+.top-head
+{
+    position: absolute;
+}
+.tool-head ion-row {
+    text-align: center;
+}
+.image-content
+{
+    position: relative;
+    height: 220px;
+}
+.tool-head label
+{
+    color: #fff;
+}
+.select-title select {
+    background: none;
+    border: none;
+    color: #fff;
+    display: block;
+    font-size: 25px;
+    outline: none;
+    margin-top: 12px;
+    margin-left: 45px;
+}
+.select-title select option {
+    color: #009cde;
+    font-size: 18px;
+}
+.expense-title {
+    border-right: 1px solid #fff;
+}
+.expense-title h1 {
+    color: #fff;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.expense-select {
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+}
+.expense-select select
+{
+    border: none;
+    font-size: 12px;
+    float: right;
+    background: none;
+    outline: none;
+    color: #62666B;
+}
+.expense-select h4
+{
+    margin: 0px;
+    font-size: 18px;
+}
+.expense-select-detail p {
+    text-align: right;
+    margin: 0px;
+    font-size: 12px;
+}
+ion-row.active {
+    border: 1px solid #009CDE;
+    background: rgba(212,233,248,0.5);
+    border-radius: 5px;
+}
+.expense-select-detail span
+{
+   font-size: 12px;
+   color: #62666B;
+}
+.expense-select-detail h5
+{
+   font-size: 15px;
+   margin:0px 0px 3px;
+}
+.expense-select-detail
+ {
+    // padding-top: 20px;
+}
+.expense-detail {
+    padding-top: 0px;
+}
+.rowss{
+    border-bottom: 0.5px solid #d8d8d8;
+    padding-left: 0;
+    padding-right: 0;
+}
+.more-btn img {
+    width: 13px;
+    margin-right: 10px;
+}
+.delete-btn{
+    margin-right: 16px;
+}
+.filter
+{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    padding:50px 20px;
+    top: 0px;
+    left: 0;
+    background: rgba(0,0,0,.5);
+}
+.select-filter
+{
+    background-color: white;  
+}
+.select-filter h1 {
+    font-size: 23px;
+    color: #009CDE;
+    margin-top: 0px;
+}
+ion-label
+{
+    color:#878C8E !important;
+    font-size:12px !important;
+}
+ion-input
+{
+    border-bottom: 1px solid #D8D8D8;
+    padding-left: 0px !important;
+}
+.filter-detail {
+    padding-top: 15px;
+}
+.filter-select {
+    margin-top: 15px;
+}
+ion-datetime {
+    border-bottom: 1px solid #D8D8D8;
+    padding-left: 5px;
+}
+ion-select {
+    padding-left: 5px;
+    border-bottom: 1px solid #D8D8D8;
+}
+.filter-sel {
+    margin-top: 15px;
+}
+.filter-btn {
+    margin: 30px 0px 20px;
+}
+button.app-btn {
+    width: 100%;
+    background: #009CDE;
+    color: #fff;
+    padding: 10px 0px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+button.can-btn {
+    width: 100%;
+    border-radius: 5px;
+    color: #62666B;
+    border: 1px solid #62666B;
+    background: transparent;
+    padding: 9px 0px;
+    font-size: 18px;
+}

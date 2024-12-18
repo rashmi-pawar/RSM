@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="{{back}}"></ion-back-button>
+        </ion-buttons>
+        <ion-title color="light">
+            Find us
+        </ion-title>
+    </ion-toolbar>
+
+    <ion-toolbar color="primary">
+        <ion-searchbar searchIcon="search" color="light" placeholder="Search" [(ngModel)]="autocomplete.query"
+            [showCancelButton]="true" (click)="showAuto()" (ionInput)="updateSearch()" (ionFocus)="showAuto()" (ionCancel)="dismiss()">
+        </ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding [scrollY]="false">
+
+    <div class="search-content" *ngIf="showAutoList">
+        <ion-list>
+            <ion-item (click)="getCurrentNear()">
+                <ion-icon name="navigate" slot="start"></ion-icon>
+                <ion-label>Show nearest branches to me</ion-label>
+            </ion-item>
+            <ion-item [hidden]="autocompleteItems?.length == 0" *ngFor="let item of autocompleteItems"
+                (click)="geoCode(item)">
+                <ion-icon name="pin" slot="start"></ion-icon>
+                <ion-label>{{ item }}</ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+
+
+    <div #map1 id="map1"></div>
+    <div *ngIf="isNotAllowLocation">
+        Please allow "LocationAccess" to access your location while you are using app.
+    </div>
+
+    <ion-card class="marker-box" *ngIf="showSearchList && searchList.length > 0">
+        <ion-card-content no-padding>
+            <ion-list no-padding lines="none">
+                <ion-item no-padding *ngFor="let item of searchList; let i = index;">
+                    <ion-col no-padding size="2" (click)="mapCenter(item.latitude, item.longitude, i)">
+                        <ion-icon class="pin" name="pin"></ion-icon>
+                        <div>
+                            <ion-note no-padding text-wrap>{{ item.distance }}</ion-note>
+                        </div>
+                    </ion-col>
+                    <ion-label size="6" no-padding (click)="mapCenter(item.latitude, item.longitude, i)">
+                        <h2>{{ item.title }}</h2>
+                        <ion-label no-padding text-wrap>{{ item.address }}</ion-label>
+                    </ion-label>
+                    <ion-icon size="2" name="locate" (click)="openMap(item)"></ion-icon>&nbsp;
+                    <ion-icon size="2" name="call" (click)="callNow(item.phone)"></ion-icon>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+
+</ion-content>

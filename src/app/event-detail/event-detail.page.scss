@@ -1,0 +1,210 @@
+ion-content {
+  --ion-background-color: #FFFFFF;
+}
+.modal-back-arrow{
+  width: 24px;
+  height: 24px;
+  padding-left: 12px;
+}
+.modal-back-arrow-ios{
+  width: 35px;
+  height: 35px;
+  margin-left: -5px;
+  margin-right: -7px;
+}
+.back-text{
+  font-size: 18px;
+}
+.event-banner{
+  //background-image: url(/assets/img/avatar.png);
+  background-color: #009CDE;
+  height: 70px;
+  background-size: 100% 100%;
+  padding-top: 18px;
+  background-repeat: no-repeat;
+}
+.firs-section{
+  background: #009CDE;
+  padding: 0px 0px 10px 0px;
+  color: #FFF;
+  .chat-image{
+    width: 80px;
+    position: absolute;
+    top: -6px;
+    right: 10%;
+    opacity: 0.4
+  }
+  .title-section{
+    background: #FFF;
+    color: #000;
+    margin: 0px 5px 5px 5px;
+    padding: 5px;
+    text-align: center;
+    .event-name{
+      color: #51b14b;
+      margin-top: 10px;
+    }
+    .address{
+      color: #022eff;
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+  }
+  .title{
+    font-size: 20px;
+    margin-top: 0;
+    background-color: #51b14b;
+    width: 70%;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+  }
+  .sub-title{
+    font-size: 20px;
+    margin-top: 0;
+    color: #57585b;
+    font-weight: normal;
+    margin-bottom: 5px;
+  }
+  .time{
+    color: #57585b;
+  }
+  p{
+    margin: 0;
+  }
+}
+.description-section{
+  padding: 15px;
+  text-align: justify;
+}
+.slido-section{
+    text-decoration: underline;
+    padding-right: 5px;
+}
+.coordinator-section{
+  .heading{
+    font-size: 20px;
+    color: #51b14b;
+    text-align: center;
+  }
+  .description{
+    text-align: center;
+    padding: 0 15px;
+    color: #57585b;
+  }
+}
+.expand-card-block{
+  margin: 10px 3px;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: #399dde;
+  .title{
+    padding-bottom: 14px;
+  }
+  .main-content{
+    padding: 14px 0px 0px;
+  }
+  .name{
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align: center;
+  }
+  .expand-icon{
+    position: absolute;
+    right: 10px;
+    font-size: 35px;
+    color: #FFF;
+    top: -7px;
+  }
+  .expand-content{
+    background-color: #FFFFFF;
+    padding: 0 15px;
+  }
+}
+.image-content
+{
+  height: 165px;
+}
+.display-flex{
+  display: flex;
+}
+.trip-option p {
+  color: #878C8E;
+  font-size: 16px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.selected {
+  background-color: #399dde !important;
+  p {
+    color: #FFF  !important;
+  }
+}
+.speaker-list{
+  display: flex;
+  //margin-bottom: 10px;
+  .image{
+    min-width: 80px;
+  }
+  img{
+    width: 80px;
+    height: 80px;
+  }
+  .right-section{
+    padding-left: 10px;
+  }
+  .speaker-name{
+    font-size: 18px;
+  }
+  .designation{
+    font-size: 16px;
+  }
+  .profile-link{
+    text-decoration: underline;
+    color: blueviolet;
+  }
+}
+.attendees-list{
+  margin: 10px 10px 0px 10px;
+  padding: 5px;
+}
+.agenda-heading{
+  font-size: 20px;
+  color: #51b14b;
+  text-align: center;
+}
+.agenda-detail{
+  padding-top: 10px;
+  overflow: auto;
+}
+.segment-btn{
+  min-height: 35px;
+  min-width: 35px;
+  --padding-end: 10px !important;
+  p{
+    color: #FFF;
+  }
+}
+.segment-tab{
+  background: #57585b;
+  height: 35px;
+  min-height: 35px;
+  overflow: scroll;
+  justify-content: left !important;
+}
+.other-detail{
+  display: flex;
+  justify-content: space-between;
+  .left-section{
+    padding: 10px;
+  }
+}
+.similar-event{
+  .card-block{
+    width: 100%;
+    margin-top: 0;
+    box-shadow: 0 2px 7px #00000020;
+    .title{
+      font-size: 18px;
+    }
+  }
+}

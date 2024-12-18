@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="412px" height="675px" viewBox="0 0 412 675" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>light hour</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#000000" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0" offset="95%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.04" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.4" offset="4.9360058%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="20%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-3" x="0" y="0" width="386.25" height="569.954268" rx="2.35518293"></rect>
+        <filter x="-23.9%" y="-11.7%" width="147.9%" height="132.5%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="26" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="26.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="21" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="8.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.22 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Android" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="007" transform="translate(0.000000, -83.000000)">
+            <g id="light-hour" transform="translate(12.875000, 109.437500)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="bg">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                    <rect stroke="url(#linearGradient-1)" stroke-width="0.689732143" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd" x="0.344866071" y="0.344866071" width="385.560268" height="569.264536" rx="2.35518293"></rect>
+                    <rect stroke="url(#linearGradient-2)" stroke-width="0.689732143" stroke-linejoin="square" x="0.344866071" y="0.344866071" width="385.560268" height="569.264536" rx="2.35518293"></rect>
+                </g>
+                <g id="options" mask="url(#mask-4)">
+                    <g transform="translate(0.000000, 508.719512)">
+                        <rect id="space" x="0" y="0" width="386.25" height="61.2347561"></rect>
+                        <g id="btt" stroke-width="1" fill-rule="evenodd" transform="translate(315.594512, 9.420732)">
+                            <rect id="space" x="0" y="0" width="61.2347561" height="42.3932927" rx="2.35518293"></rect>
+                            <text id="OK" font-family="OpenSans-Semibold, Open Sans" font-size="15.45" font-weight="500" letter-spacing="0.55178572" fill="#009CDE">
+                                <tspan x="19.0476602" y="30.0634146">OK</tspan>
+                            </text>
+                        </g>
+                        <g id="btt" stroke-width="1" fill-rule="evenodd" transform="translate(220.209604, 9.420732)">
+                            <rect id="space" x="0" y="0" width="85.9641768" height="42.3932927" rx="2.35518293"></rect>
+                            <text id="CANCEL" font-family="OpenSans-Semibold, Open Sans" font-size="15.45" font-weight="500" letter-spacing="0.55178572" fill="#009CDE">
+                                <tspan x="11.8789407" y="30.0634146">CANCEL</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="clock" mask="url(#mask-4)">
+                    <g transform="translate(18.841463, 150.731707)">
+                        <circle id="bg" fill="#F2F2F2" cx="174.283537" cy="174.283537" r="174.283537"></circle>
+                        <g id="select" stroke-width="1" fill="none" transform="translate(69.477896, 15.308689)">
+                            <path d="M-21.3031754,85.8466947 L-21.3031754,83.4915118 L100.418798,84.3535686 L100.418798,86.7087515 L-21.3031754,85.8466947 Z M123.973868,109.082989 C110.966552,109.082989 100.422039,98.5384762 100.422039,85.53116 C100.422039,72.5238439 110.966552,61.9793308 123.973868,61.9793308 C136.981185,61.9793308 147.525698,72.5238439 147.525698,85.53116 C147.525698,98.5384762 136.981185,109.082989 123.973868,109.082989 Z" id="indicator" fill="#009CDE" fill-rule="nonzero" transform="translate(63.111261, 85.531160) rotate(240.000000) translate(-63.111261, -85.531160) "></path>
+                            <circle id="center" fill="#000000" cx="104.80564" cy="158.974848" r="3.53277439"></circle>
+                        </g>
+                        <g id="numbers" stroke-width="1" fill="none" transform="translate(21.196646, 16.486280)" font-size="18.8414634">
+                            <text id="1" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="221.299796" y="40.0190549">1</tspan>
+                            </text>
+                            <text id="12" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="141.136177" y="20">12</tspan>
+                            </text>
+                            <text id="9" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="1.0901921" y="167.198933">9</tspan>
+                            </text>
+                            <text id="10" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="16.3114818" y="94.1882622">10</tspan>
+                            </text>
+                            <text id="11" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="69.3030976" y="40.0190549">11</tspan>
+                            </text>
+                            <text id="2" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="274.291412" y="94.1882622">2</tspan>
+                            </text>
+                            <text id="4" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="274.291412" y="240.209604">4</tspan>
+                            </text>
+                            <text id="8" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="21.109247" y="240.209604">8</tspan>
+                            </text>
+                            <text id="5" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="221.299796" y="293.20122">5</tspan>
+                            </text>
+                            <text id="7" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="75.2784543" y="293.20122">7</tspan>
+                            </text>
+                            <text id="6" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill="#000000">
+                                <tspan x="148.289125" y="313.220274">6</tspan>
+                            </text>
+                            <text id="3" font-family="OpenSans-Semibold, Open Sans" font-weight="500" fill="#000000">
+                                <tspan x="293.730871" y="167.198933">3</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <g id="header" mask="url(#mask-4)">
+                    <path d="M2.35403185,0 C1.05393596,0 0,1.04695118 0,2.36118445 L0,113.04878 L386.25,113.04878 L386.25,2.36118445 C386.25,1.05713828 385.192786,0 383.895968,0 L2.35403185,0 Z" id="bg" fill="#009CDE"></path>
+                    <g id="hours" transform="translate(104.695732, 10.598323)" fill="#FFFFFF" font-family="OpenSans-Regular, Open Sans" font-weight="normal">
+                        <text id="AM" font-size="21.1966463">
+                            <tspan x="213.175457" y="75.9916159">PM</tspan>
+                        </text>
+                        <text id="AM" font-size="21.1966463" fill-opacity="0.538552989">
+                            <tspan x="213.175457" y="51.2621951">AM</tspan>
+                        </text>
+                        <text id="11" font-size="78.898628">
+                            <tspan x="0.775104057" y="84">11</tspan>
+                        </text>
+                        <text id=":30" font-size="78.898628" fill-opacity="0.54">
+                            <tspan x="91.8521341" y="84">:30</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

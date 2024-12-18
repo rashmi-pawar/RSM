@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      {{taxDetail?.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <p class="innerHtmltd" [innerHTML]="taxDetail?.content | safeHtml"></p>
+</ion-content>

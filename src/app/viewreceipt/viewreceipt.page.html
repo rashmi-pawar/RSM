@@ -1,0 +1,161 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="{{back}}"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Receipt Manager</ion-title>
+        <ion-buttons slot="end" class="heart-btn">
+            <ion-icon name="heart" (click)="addToFavourites('Receipt Manager', 'viewreceipt')" *ngIf="isFav == false">
+            </ion-icon>
+            <ion-icon name="heart" (click)="removefavourites('viewreceipt')" *ngIf="isFav == true" style="color: red">
+            </ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="receipt-add" padding *ngIf="showpop" (click)="hidee($event.target)">
+        <div class="pop-list-detail ion-padding-horizontal" id="sh">
+            <ul>
+                <li (click)="checklogin('viewreceipt','uploadtocloud')" id="upload" class="popup-li upload">
+                    Upload to cloud
+                </li>
+                <li (click)="checklogin('viewreceipt','exporttosv')" id="export" class="popup-li export">
+                    Export to CSV
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="image-content">
+        <div class="tool-head" padding>
+            <ion-row class="ion-padding-horizontal">
+                <ion-col no-padding size="6">
+                    <div class="expense-title ion-padding-horizontal">
+                        <label for="expense">Total Expenses</label>
+                        <h1>{{totalamount}}</h1>
+                    </div>
+                </ion-col>
+                <ion-col no-padding size="6">
+                    <div class="select-title">
+                        <label for="year">Financial Year</label>
+                        <ion-select [(ngModel)]="year" (ionChange)="selectYear($event)">
+                            <ion-select-option *ngFor="let yearObj of yearArray" value="{{yearObj}}">{{yearObj}}
+                            </ion-select-option>
+                        </ion-select>
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col no-padding>
+                    <div class="add-new-recpt">
+                        <p class="blue-color" (click)="goTo('home')">
+                            <ion-icon name="add"></ion-icon> &nbsp;ADD NEW RECEIPT
+                        </p>
+                    </div>
+                </ion-col>
+
+                <ion-col no-padding (click)="checklogin('viewreceipt','uploadtocloud')">
+                    <div class="upload-recpt">
+                        <p>EXPORT AND SHARE</p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="expense-detail" padding>
+            <div class="expense-select grey-color" padding>
+                <ion-row>
+                    <ion-col no-padding size="8">
+                        <h4>Expense Details</h4>
+                    </ion-col>
+                    <ion-col no-padding size="4">
+                        <ion-select [(ngModel)]="filter" (change)="changeype($event)">
+                            <ion-select-option value="category">Category</ion-select-option>
+                            <ion-select-option value="month">Month</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+
+                <!-- month list -->
+                <div class="month-list" *ngIf="filter =='month'">
+
+                    <div *ngIf="monthAmountList?.length">
+                        <ion-row *ngFor="let months of monthAmountList; let i =index;" (click)="next(months.month)">
+                            <ion-col no-padding size="8">
+                                <p class="grey-color">{{months.name}}</p>
+                            </ion-col>
+                            <ion-col no-padding size="4">
+                                <p class="blue-color right">{{months.amountText}}</p>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+
+                    <div *ngIf="!monthAmountList?.length" class="nodata">No Record Found</div>
+
+                    <div class="total-expense ion-padding-top">
+                        <p class="grey-color">Total Expenses</p>
+                        <span class="blue-color">{{monthstotalamount}}</span>
+                    </div>
+
+                </div>
+
+                <!-- end month list -->
+
+                <!-- expense list -->
+                <div class="expense-select-detail" padding id="cat" *ngIf="filter == 'category'">
+                    <div *ngIf="expenseslist?.length">
+                        <ion-row *ngFor="let list of expenseslist" (click)="next(list.expense_type)">
+                            <ion-col no-padding size="2">
+                                <img src="assets/img/{{list.icon}}">
+                            </ion-col>
+                            <ion-col no-padding size="6">
+                                <p>{{list.expense_type}}</p>
+                            </ion-col>
+                            <ion-col no-padding size="4">
+                                <span class="blue-color" style="word-break: break-all;">{{list?.amountText}}</span>
+                            </ion-col>
+                        </ion-row>
+
+                    </div>
+                    <div *ngIf="!expenseslist?.length" class="nodata">No Record Found</div>
+
+
+                    <div class="total-expense ion-padding-top">
+                        <p class="grey-color">Total Expenses</p>
+                        <span class="blue-color">{{expensetotalamount}}</span>
+                    </div>
+
+                </div>
+                <!-- end expense list -->
+            </div>
+
+            <!-- list -->
+            <div class="current-add" *ngIf="filter == 'category'">
+                <ion-row class="grey-color">
+                    <ion-col no-padding size="9">
+                        <h5>Recently added receipts</h5>
+                    </ion-col>
+                    <ion-col no-padding size="3" (click)="go('receiptlist','viewreceipt',year)">
+                        <p class="blue-color right"> View All</p>
+                    </ion-col>
+                </ion-row>
+                <div *ngIf="lists?.length">
+                    <ion-row padding *ngFor="let listing of lists | slice:0:3" (click)="details(listing)">
+                        <ion-col no-padding size="12">
+                            <h4>{{listing.expense_type}}</h4>
+                        </ion-col>
+                        <ion-col no-padding size="6">
+                            <p class="light-grey">{{listing.date | date :'dd-MM-yyyy'}}</p>
+                        </ion-col>
+                        <ion-col no-padding size="6">
+                            <span class="green-color">{{listing.amountText}}</span>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div *ngIf="!lists?.length" class="nodata"> No data found</div>
+            </div>
+            <!-- end list -->
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="412px" height="703px" viewBox="0 0 412 703" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>light data</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#000000" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0" offset="95%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.04" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.4" offset="4.9360058%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="20%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <path d="M386.250001,595.868411 C386.250001,597.165205 385.192786,598.216463 383.895969,598.216463 L2.35403185,598.216463 C1.05393596,598.216463 -1.51902112e-09,597.164179 2.24772158e-10,595.868411 L7.98960782e-07,2.34805232 C8.00705955e-07,1.05125883 1.05721507,-1.14405568e-09 2.35403266,-4.62851676e-11 L383.895971,3.22933209e-07 C385.196066,3.24033755e-07 386.250002,1.05228433 386.250002,2.34805264 L386.250001,595.868411 Z" id="path-3"></path>
+        <filter x="-23.9%" y="-11.1%" width="147.9%" height="130.9%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="26" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="26.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="21" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="8.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.22 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Android" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="008" transform="translate(0.000000, -83.000000)">
+            <g id="light-data" transform="translate(12.875000, 109.437500)">
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <g id="bg">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                    <path stroke="url(#linearGradient-1)" stroke-width="0.689732143" d="M385.905135,595.868411 L385.905136,2.34805264 C385.905136,1.24256782 385.00542,0.344866395 383.895971,0.344866394 L2.35403266,0.344866071 C1.24627706,0.34486607 0.344866872,1.24312247 0.34486687,2.34805232 L0.344866072,595.868411 C0.34486607,596.973896 1.24458223,597.871597 2.35403185,597.871597 L383.895969,597.871597 C385.003724,597.871597 385.905135,596.973341 385.905135,595.868411 Z" stroke-linejoin="square" fill="#FFFFFF" fill-rule="evenodd"></path>
+                    <path stroke="url(#linearGradient-2)" stroke-width="0.689732143" d="M385.905135,595.868411 L385.905136,2.34805264 C385.905136,1.24256782 385.00542,0.344866395 383.895971,0.344866394 L2.35403266,0.344866071 C1.24627706,0.34486607 0.344866872,1.24312247 0.34486687,2.34805232 L0.344866072,595.868411 C0.34486607,596.973896 1.24458223,597.871597 2.35403185,597.871597 L383.895969,597.871597 C385.003724,597.871597 385.905135,596.973341 385.905135,595.868411 Z" stroke-linejoin="square"></path>
+                </g>
+                <g id="options" mask="url(#mask-4)">
+                    <g transform="translate(0.000000, 536.981707)">
+                        <rect id="space" x="0" y="0" width="386.25" height="61.2347561"></rect>
+                        <g id="btt" stroke-width="1" fill-rule="evenodd" transform="translate(315.594512, 9.420732)">
+                            <rect id="space" x="0" y="0" width="61.2347561" height="42.3932927" rx="2.35518293"></rect>
+                            <text id="OK" font-family="OpenSans-Semibold, Open Sans" font-size="15.45" font-weight="500" letter-spacing="0.55178572" fill="#009CDE">
+                                <tspan x="19.0476602" y="30.0634146">OK</tspan>
+                            </text>
+                        </g>
+                        <g id="btt" stroke-width="1" fill-rule="evenodd" transform="translate(220.209604, 9.420732)">
+                            <rect id="space" x="0" y="0" width="85.9641768" height="42.3932927" rx="2.35518293"></rect>
+                            <text id="CANCEL" font-family="OpenSans-Semibold, Open Sans" font-size="15.45" font-weight="500" letter-spacing="0.55178572" fill="#009CDE">
+                                <tspan x="11.8789407" y="30.0634146">CANCEL</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+                <circle id="select" fill="#009CDE" mask="url(#mask-4)" cx="244.939024" cy="362.698171" r="23.5518293"></circle>
+                <g id="dates" mask="url(#mask-4)" font-size="14.1310976">
+                    <g transform="translate(28.262195, 260.247713)">
+                        <text id="31" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="1.34089028" y="250.518293" fill="#000000">31</tspan>
+                        </text>
+                        <text id="2" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="316.264957" y="15" fill="#000000">2</tspan>
+                        </text>
+                        <text id="1" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="264.450933" y="15" fill="#000000">1</tspan>
+                        </text>
+                        <text id="17" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="1.34089028" y="156.310976" fill="#000000">17</tspan>
+                        </text>
+                        <text id="18" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="53.1549147" y="156.310976" fill="#000000">18</tspan>
+                        </text>
+                        <text id="20" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="156.782963" y="156.310976" fill="#000000">20</tspan>
+                        </text>
+                        <text id="21" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="208.596988" y="156.310976" fill="#000000">21</tspan>
+                        </text>
+                        <text id="22" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="260.411012" y="156.310976" fill="#000000">22</tspan>
+                        </text>
+                        <text id="23" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="312.225037" y="156.310976" fill="#000000">23</tspan>
+                        </text>
+                        <text id="19" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="104.968939" y="156.310976" fill="#000000">19</tspan>
+                        </text>
+                        <text id="24" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="1.34089028" y="203.414634" fill="#000000">24</tspan>
+                        </text>
+                        <text id="25" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="53.1549147" y="203.414634" fill="#000000">25</tspan>
+                        </text>
+                        <text id="27" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="156.782963" y="203.414634" fill="#000000">27</tspan>
+                        </text>
+                        <text id="28" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="208.596988" y="203.414634" fill="#000000">28</tspan>
+                        </text>
+                        <text id="29" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="260.411012" y="203.414634" fill="#000000">29</tspan>
+                        </text>
+                        <text id="30" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="312.225037" y="203.414634" fill="#000000">30</tspan>
+                        </text>
+                        <text id="26" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="104.968939" y="203.414634" fill="#000000">26</tspan>
+                        </text>
+                        <text id="14" font-family="OpenSans-Semibold, Open Sans" font-weight="500">
+                            <tspan x="208.610788" y="109.207317" fill="#FFFFFF">14</tspan>
+                        </text>
+                        <text id="10" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="1.34089028" y="109.207317" fill="#000000">10</tspan>
+                        </text>
+                        <text id="11" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="53.1549147" y="109.207317" fill="#000000">11</tspan>
+                        </text>
+                        <text id="13" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="156.782963" y="109.207317" fill="#000000">13</tspan>
+                        </text>
+                        <text id="15" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="260.411012" y="109.207317" fill="#000000">15</tspan>
+                        </text>
+                        <text id="16" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="312.225037" y="109.207317" fill="#000000">16</tspan>
+                        </text>
+                        <text id="12" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="104.968939" y="109.207317" fill="#000000">12</tspan>
+                        </text>
+                        <text id="8" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="264.450933" y="62.1036585" fill="#000000">8</tspan>
+                        </text>
+                        <text id="3" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="5.38081099" y="62.1036585" fill="#000000">3</tspan>
+                        </text>
+                        <text id="4" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="57.1948354" y="62.1036585" fill="#000000">4</tspan>
+                        </text>
+                        <text id="6" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="160.822884" y="62.1036585" fill="#000000">6</tspan>
+                        </text>
+                        <text id="7" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="212.636909" y="62.1036585" fill="#000000">7</tspan>
+                        </text>
+                        <text id="9" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="316.264957" y="62.1036585" fill="#000000">9</tspan>
+                        </text>
+                        <text id="5" font-family="OpenSans-Regular, Open Sans" font-weight="normal" fill-opacity="0.87">
+                            <tspan x="109.00886" y="62.1036585" fill="#000000">5</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="days" mask="url(#mask-4)" font-family="OpenSans-Semibold, Open Sans" font-size="14.1310976" font-weight="500" opacity="0.54">
+                    <g transform="translate(28.262195, 213.144055)">
+                        <text id="M">
+                            <tspan x="54.7143034" y="15" fill="#000000">M</tspan>
+                        </text>
+                        <text id="S">
+                            <tspan x="5.53605987" y="15" fill="#000000">S</tspan>
+                        </text>
+                        <text id="W">
+                            <tspan x="158.180203" y="15" fill="#000000">W</tspan>
+                        </text>
+                        <text id="T">
+                            <tspan x="212.678308" y="15" fill="#000000">T</tspan>
+                        </text>
+                        <text id="F">
+                            <tspan x="264.730381" y="15" fill="#000000">F</tspan>
+                        </text>
+                        <text id="S">
+                            <tspan x="316.420206" y="15" fill="#000000">S</tspan>
+                        </text>
+                        <text id="T">
+                            <tspan x="109.050259" y="15" fill="#000000">T</tspan>
+                        </text>
+                    </g>
+                </g>
+                <g id="subheader" mask="url(#mask-4)">
+                    <g transform="translate(18.841463, 160.152439)">
+                        <g id="next" opacity="0.54" stroke-width="1" fill-rule="evenodd" transform="translate(310.884146, 0.000000)">
+                            <rect id="space" x="0" y="0" width="28.2621951" height="28.2621951"></rect>
+                            <polygon id="Shape" fill="#000000" points="10.1272578 8.71417683 11.7758859 7.06554878 18.8414347 14.1310976 11.7758859 21.1966463 10.1272578 19.5480183 15.5441786 14.1310976"></polygon>
+                        </g>
+                        <text id="October-2021" font-family="OpenSans-Semibold, Open Sans" font-size="16.4862805" font-weight="500" fill-opacity="0.87">
+                            <tspan x="121.625993" y="21.5327744" fill="#000000">October 2021</tspan>
+                        </text>
+                        <g id="prev" opacity="0.54" stroke-width="1" fill-rule="evenodd">
+                            <rect id="space" x="0" y="0" width="28.2621951" height="28.2621951"></rect>
+                            <polygon id="Shape" fill="#000000" points="18.1349085 8.71417683 16.4862805 7.06554878 9.42073171 14.1310976 16.4862805 21.1966463 18.1349085 19.5480183 12.7179878 14.1310976"></polygon>
+                        </g>
+                    </g>
+                </g>
+                <g id="header" mask="url(#mask-4)">
+                    <path d="M0,141.310976 L0,2.36403497 C0,1.05841451 1.05721426,0 2.35403185,0 L383.895968,0 C385.196064,0 386.25,1.05620108 386.25,2.36403497 L386.25,141.310976 L0,141.310976 Z" id="bg" fill="#009CDE"></path>
+                    <text id="Thu,-Oct-14" font-family="OpenSans-Semibold, Open Sans" font-size="40.0381098" font-weight="500" fill="#FFFFFF">
+                        <tspan x="28.2621951" y="118.365854">Thu, Oct 14</tspan>
+                    </text>
+                    <text id="Start-date" font-family="OpenSans-Regular, Open Sans" font-size="16.4862805" font-weight="normal" line-spacing="23.5518293" fill="#FFFFFF">
+                        <tspan x="28.2621951" y="40.3742378">Start date</tspan>
+                    </text>
+                    <text id="2021" font-family="OpenSans-Semibold, Open Sans" font-size="18.8414634" font-weight="500" line-spacing="28.2621951" fill="#FFFFFF" fill-opacity="0.7">
+                        <tspan x="28.2621951" y="68.28125">2021</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

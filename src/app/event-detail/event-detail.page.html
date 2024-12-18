@@ -1,0 +1,176 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="!isModal" defaultHref="{{back}}"></ion-back-button>
+      <ion-icon name="arrow-back" class="modal-back-arrow" (click)="dismissModal()" *ngIf="isModal && platform.is('android')"></ion-icon>
+      <ion-icon name="arrow-back" class="modal-back-arrow-ios" (click)="dismissModal()" *ngIf="isModal && platform.is('ios')"></ion-icon>
+      <span class="back-text" (click)="dismissModal()" *ngIf="isModal && platform.is('ios')">Back</span>
+    </ion-buttons>
+    <ion-title color="light">
+      Event Details
+    </ion-title>
+    <ion-buttons slot="end">
+      <div (click)="openUrl(eventDetail.slido_url)" class="slido-section">{{eventDetail.slido_name}}</div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+   <ion-refresher slot="fixed" (ionRefresh)="pullToRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="firs-section">
+    <div class="event-banner" [ngStyle]="{'backgroundImage': 'url('+ eventDetail.banner_image+')'}" *ngIf="eventDetail.banner_text || eventDetail.banner_image">
+      <h4 class="title" *ngIf="eventDetail.banner_text">{{eventDetail.banner_text}}</h4>
+    </div>
+
+<!--        <img src="./assets/img/chat.svg" class="chat-image" />-->
+    <div class="title-section">
+      <h4 class="event-name" *ngIf="eventDetail.event_name">{{eventDetail.event_name}}</h4>
+      <!-- <h5 class="sub-title" *ngIf="eventDetail.event_date">{{formatDate(eventDetail.event_date)}}</h5> -->
+      <h5 class="sub-title" *ngIf="eventDetail.venue">{{eventDetail.venue}}</h5>
+      <p class="time" *ngIf="eventDetail.start_time || eventDetail.end_time">
+        {{timeConvert(eventDetail.start_time)}} {{eventDetail.end_time ? ' - '+timeConvert(eventDetail.end_time) : ''}}
+      </p>
+      <div class="address" (click)="openMap()">
+        {{!isEmpty(eventDetail.venue_street) ? eventDetail.venue_street : ''}}{{!isEmpty(eventDetail.venue_city) ? ', ' + eventDetail.venue_city : ''}}{{!isEmpty(eventDetail.venue_state) ? ', ' + eventDetail.venue_state : ''}}{{!isEmpty(eventDetail.venue_country) ? ', ' + eventDetail.venue_country : ''}}{{!isEmpty(eventDetail.venue_zip) ? ', ' + eventDetail.venue_zip : ''}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="eventDetail.event_description" class="description-section innerHtmltd" [innerHTML]="eventDetail.event_description | safeHtml">
+  </div>
+  <img *ngIf="eventDetail.event_image" [src]="eventDetail.event_image" style="padding: 15px;">
+  <div class="coordinator-section" *ngIf="eventDetail.co_name">
+    <h4 class="heading">Coordinator Details</h4>
+    <div class="description">
+      For further information please contact {{eventDetail.co_name}} on <span (click)="callNow(eventDetail.co_mobile)">{{eventDetail.co_mobile}}</span> or email {{eventDetail.co_email}}
+    </div>
+  </div>
+  <ion-card class="expand-card-block" *ngIf="speakerList.length > 0">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(items[0])" class="title">
+        <div class="name">Speaker Details</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!items[0].expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="items[0].expanded ? items[0].expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <app-expandable [expanded]="items[0].expanded ? items[0].expanded : false">
+        <div class="expand-content">
+          <div class="speaker-list" *ngFor="let speaker of speakerList">
+            <div class="image">
+              <img [src]="speaker.profile_pic" />
+            </div>
+            <div class="right-section" style="flex: 80%;">
+              <div class="speaker-name">{{speaker.speaker_name}}</div>
+              <div class="designation">{{speaker.speaker_detail}}</div>
+              <div class="profile-link" (click)="openUrl(speaker.linkedin_profile)">Linkedin Profile</div>
+            </div>
+          </div>
+          <p class="nodata" *ngIf="speakerList.length == 0">No details found</p>
+        </div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="expand-card-block" *ngIf="agendaList.length > 0">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(items[2])" class="title">
+        <div class="name">Agenda</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!items[2].expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="items[2].expanded ? items[2].expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <app-expandable expandHeight="100px" [expanded]="items[2].expanded ? items[2].expanded : false">
+        <div class="expand-content">
+<!--          <h4 class="agenda-heading">&nbsp</h4>-->
+          <br />
+          <ion-segment mode="md" class="segment-tab" [(ngModel)]="segmentFilter" *ngIf="agendaList.length > 0">
+            <ion-segment-button *ngFor="let agenda of agendaList; let i = index" mode="md" value="{{agenda.title}}" class="segment-btn" [ngClass]="{selected: segmentFilter === agenda.title}">
+              <p>{{agenda.title}}</p>
+            </ion-segment-button>
+          </ion-segment>
+          <div [ngSwitch]="segmentFilter">
+            <ng-container *ngFor="let agenda of agendaList; let i = index">
+              <div class="agenda-detail innerHtmltd" *ngSwitchCase="agenda.title" [innerHTML]="agenda.description | safeHtml">
+              </div>
+            </ng-container>
+          </div>
+          <p class="nodata" *ngIf="agendaList.length == 0">No details found</p>
+        </div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="expand-card-block" *ngIf="eventDetail.other_description">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(items[1])" class="title">
+        <div class="name">Directory</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!items[1].expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="items[1].expanded ? items[1].expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <app-expandable expandHeight="100px" [expanded]="items[1].expanded ? items[1].expanded : false">
+        <div class="expand-content">
+          <div class="other-detail">
+            <div class="left-section innerHtmltd" [ngStyle]="{'width': '100%'}" [innerHTML]="eventDetail.other_description | safeHtml">
+            </div>
+          </div>
+        </div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card>
+  <!-- <ion-card class="expand-card-block">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(items[3])" class="title">
+        <div class="name">Similar Events</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!items[3].expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="items[3].expanded ? items[3].expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <app-expandable expandHeight="100px" [expanded]="items[3].expanded ? items[3].expanded : false">
+        <div class="expand-content" style="padding: 0">
+          <div class="similar-event">
+            <p *ngIf="similarEvents.length === 0" style="padding: 15px;">
+              No details found
+            </p>
+            <ion-slides pager="true" [options]="slideOpts" *ngIf="similarEvents.length > 0">
+              <ion-slide *ngFor="let event of similarEvents">
+                <ion-card class="card-block" (click)="presentModal(event)">
+                  <ion-card-content class="main-content">
+                    <ion-card-title color="primary" class="title">{{event.event_name}}</ion-card-title>
+                    <ion-card-subtitle class="sub-title">{{formatDate(event.event_date)}}</ion-card-subtitle>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          </div>
+        </div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card> -->
+  <!-- <ion-card class="expand-card-block">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(items[4])" class="title">
+        <div class="name">Event Attendees</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!items[4].expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="items[4].expanded ? items[4].expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <app-expandable expandHeight="100px" [expanded]="items[4].expanded ? items[4].expanded : false">
+        <div class="expand-content" style="padding: 0">
+          <br />
+          <div *ngFor="let attendees of attendeesList">
+            <ion-card class="speaker-list attendees-list" *ngIf="isDisplayCard(attendees)">
+              <div class="right-section">
+                <div class="speaker-name" *ngIf="attendees.is_share_first_name === '1' || attendees.is_share_last_name === '1' && (attendees.first_name || attendees.last_name)"><b>Name:</b> {{attendees.is_share_first_name ? attendees.first_name : ''}} {{attendees.is_share_last_name ? attendees.last_name : ''}}</div>
+                <div class="speaker-name" *ngIf="attendees.is_share_email === '1' && attendees.email"><b>Email:</b> {{attendees.email}}</div>
+                <div class="designation" *ngIf="attendees.is_share_mobile === '1' && attendees.mobile"><b>Mobile:</b> <span (click)="callNow(attendees.mobile)">{{attendees.mobile}}</span></div>
+                <div class="designation" *ngIf="attendees.is_share_post_code === '1' && attendees.post_code"><b>Post Code:</b> {{attendees.post_code}}</div>
+                <div class="profile-link" (click)="openUrl(attendees.linkedin_url)" *ngIf="attendees.is_share_linkedin_url === '1' && attendees.linkedin_url">Linkedin Profile</div>
+              </div>
+            </ion-card>
+          </div>
+          <div class="similar-event">
+            <p *ngIf="attendeesList.length === 0" style="padding: 15px;">
+              No details found
+            </p>
+
+          </div>
+        </div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card> -->
+  <br />
+</ion-content>

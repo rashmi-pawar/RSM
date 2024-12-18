@@ -1,0 +1,138 @@
+<ion-app>
+  <ion-split-pane>
+    <ion-menu menuId="menu" side="end" (ionDidClose)="closeMenu()">
+      <ion-header>
+        <ion-toolbar>
+          <ion-item lines="none">
+            <ion-buttons slot="start" (click)="closeMenu()">
+              <ion-icon name="close"></ion-icon>
+            </ion-buttons>
+          </ion-item>
+          <ion-menu-toggle menu="menu" auto-hide="false">
+            <ion-item (click)="menuHeaderClick()" class="menuProfile" lines="none">
+              <ion-segment-button mode="md">
+                <div class="profile-pic">
+                  <img src="{{(this.userData && this.userData.profile_pic) ? this.userData.profile_pic : 'assets/img/avatar.jpg' }}" onerror="this.src='assets/img/avatar.jpg'" width="60" height="60"/>
+<!--                  <ion-icon name="md-create"></ion-icon>-->
+                </div>
+                <ion-label *ngIf="this.userData == undefined || !this.userData">
+                  <span>Login</span> /
+                  <span>Create account</span>
+                </ion-label>
+                <ion-label *ngIf="this.userData != undefined || this.userData" style="text-align: center;">
+                  <div>{{this.userData.first_name}} {{this.userData.last_name}}</div>
+                  <span>{{this.userData.email}}</span>
+                </ion-label>
+                <ion-note text-wrap>Welcome to the RSM Australia App</ion-note>
+              </ion-segment-button>
+            </ion-item>
+          </ion-menu-toggle>
+          <hr />
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-menu-toggle menu="menu" autoHide="false">
+          <ion-list lines="none">
+            <ion-item (click)="goTo(menu.url)" lines="none" *ngFor="let menu of appPages">
+              <ion-icon slot="start" [name]="menu.icon"></ion-icon>
+              <ion-label text-wrap>
+                {{ menu.title }}
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" (click)="goTo('my-events')" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" name="md-calendar"></ion-icon>
+              <ion-label>
+                Upcoming Events
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" (click)="$event.stopPropagation();presentEventCodeDialog()" *ngIf="!isGradWeekSubscribe && gradStatus === 'Y'">
+              <ion-icon slot="start" name="barcode"></ion-icon>
+              <ion-label>
+                Enter Event Code
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="goTo('grad-week-agenda')" lines="none" *ngIf="isGradWeekSubscribe && gradStatus === 'Y'">
+              <ion-icon slot="start" name="calendar"></ion-icon>
+              <ion-label text-wrap>
+                Grad Week 2021 Agenda
+              </ion-label>
+            </ion-item>
+            <ion-item (click)="goTo('grad-week-faq')" lines="none" *ngIf="isGradWeekSubscribe && gradStatus === 'Y'">
+              <ion-icon slot="start" name="help-circle"></ion-icon>
+              <ion-label text-wrap>
+                Grad Week 2021 FAQ
+              </ion-label>
+            </ion-item>
+            <!--<ion-item (click)="goTo('events')" lines="none" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" src="assets/icon/event.svg"></ion-icon>
+              <ion-label text-wrap>
+                My Events
+              </ion-label>
+            </ion-item>-->
+            <ion-item lines="none" (click)="goTo('updateprofile')" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" name="create"></ion-icon>
+              <ion-label>
+                Edit Profile
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" (click)="goTo('updatepassword')" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                Change Password
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" (click)="deleteAccount()" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" name="trash"></ion-icon>
+              <ion-label>
+                Delete Account
+              </ion-label>
+            </ion-item>
+            <ion-item lines="none" (click)="logout()" *ngIf="this.userData != undefined || this.userData">
+              <ion-icon slot="start" name="log-out"></ion-icon>
+              <ion-label>
+                Logout
+              </ion-label>
+            </ion-item>
+            <div class="version-number">
+              {{currentVersion}}
+            </div>
+          </ion-list>
+        </ion-menu-toggle>
+      </ion-content>
+      <ion-footer class="menu-footer">
+        <ion-toolbar>
+          <ion-title class="title" style="color: #399cde !important" (click)="goTo('https://www.rsm.global/australia/legal/privacy-policy')">Privacy Policy</ion-title>
+        </ion-toolbar>
+        <ion-toolbar>
+          <ion-title class="title">{{this.deviceID}}</ion-title>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+  <form [formGroup]="addEventCodeForm" class="add-event-code" *ngIf="showEventDialog">
+    <div class="add-new-vehicle" padding>
+      <div class="vehicle-detail" padding>
+        <h1>Event Code</h1>
+        <div class="vehicle-form">
+          <ion-row>
+            <ion-col size="12">
+              <ion-input placeholder="Enter Event Code" type="password" class="event-code-input" formControlName="event_code"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <ion-row class="loc-btn">
+          <ion-col size="6">
+            <button type="button" class="cancle-btn" (click)="showEventDialog = false">Cancel</button>
+          </ion-col>
+          <ion-col size="6">
+            <button type="button" expand="full" color="primary" expand="block" class="save-btn"
+                    (click)="addEventCode()" [disabled]="!addEventCodeForm.valid">Save</button>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </div>
+  </form>
+</ion-app>

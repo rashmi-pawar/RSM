@@ -1,0 +1,297 @@
+.more-btn ion-icon
+{
+    margin-right: 10px;
+}
+.top-head
+{
+    position: absolute;
+}
+// .tool-head ion-row {
+//     text-align: center;
+// }
+.receipt-add {
+    position: absolute;
+    z-index: 99;
+    background: #fff;
+    right: 10px;
+    top: 40px;
+    border-radius: 10px;
+}
+.pop-list-detail ul li {
+    list-style-type: none;
+    line-height: 30px;
+}
+.pop-list-detail ul {
+    padding-left: 0px !important;
+    margin: 0px;
+}
+.image-content
+{
+    position: relative;
+    // height: 210px;
+    height: 28%;
+}
+.tool-head label
+{
+    color: #fff;
+}
+.select-title ion-select {
+    color: #fff;
+    font-size: 20px !important;
+    padding: 10px 4px;
+}
+// .select-title ion-select-option {
+//     color: #009cde;
+//     font-size: 18px;
+// }
+.expense-title {
+    border-right: 1px solid #fff;
+}
+.expense-title h1 {
+    color: #fff;
+    font-weight: 600;
+    margin-top: 10px;
+    font-size: 30px;
+}
+.expense-select {
+    background: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    // padding-bottom: 0px;
+   
+}
+// .current-add {
+//     padding-top: 30px;
+// }
+// .expense-select select
+// {
+//     border: none;
+//     font-size: 12px;
+//     float: right;
+//     background: none;
+//     outline: none;
+//     color: #62666B;
+// }
+.expense-select ion-select
+{
+    padding: 0px 4px;
+}
+
+.expense-select h4
+{
+    margin: 0px;
+    font-size: 18px;
+}
+.expense-select-detail img {
+    width: 35px;
+}
+.expense-select-detail p
+{
+    margin: 5px 0px 0;
+    color: #62666B;
+    font-size: 15px;
+}
+.expense-select-detail ion-row
+{
+    margin-top: 20px;
+}
+.expense-select-detail span
+{
+    float: right;
+    margin: 5px 0px 0;
+}
+// .expense-select-detail {
+//     padding-bottom: 0px;
+// }
+.total-expense p {
+    display: inline;
+    font-size: 15px;
+}
+.total-expense span {
+    float: right;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+}
+.monthly-expense p {
+    display: inline;
+    font-size: 15px;
+}
+.monthly-expense span {
+    float: right;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+}
+.view-monthly-receipt
+{
+    text-align: center;
+    padding-top: 20px;
+}
+.view-monthly-receipt p {
+ 
+    color: #009cde !important;
+    font-size: 12px;
+}
+.current-add h4 {
+    color: #353A41;
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.current-add p
+{
+    margin: 0px;
+    font-size: 12px;
+}
+.current-add h5
+{
+    margin: 0px;
+    font-size: 18px;
+}
+.current-add span
+{
+    float: right;
+    font-size: 15px;
+}
+.add-new-recpt p{
+    font-size: 10px;
+    padding: 10px 0px;  
+    text-align: center  
+}
+.add-new-recpt ion-icon
+{
+    vertical-align: text-top;
+}
+.select-title {
+    padding-left: 15px;
+}
+.add-new-recpt
+{
+    background: #fff;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.export-recpt
+{
+    background: linear-gradient(to right, #ff7167 0%, #ff5156 100%);
+}
+.export-recpt p{
+    color: #fff;
+    font-size: 10px;
+    padding: 10px;
+    text-align: center
+}
+.upload-recpt p{
+    color: #fff;
+    font-size: 10px;
+    padding: 10px;
+    text-align: center
+}
+.upload-recpt
+{
+    background: linear-gradient(to right, #3f9c35 0%, #3f9c35 100%);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.tool-head {
+    padding-bottom: 0px;
+}
+.expense-detail {
+    padding-top: 0px;
+}
+.month-list {
+    overflow: scroll;
+    margin-top: 25px;
+}
+.month-list ul {
+    padding: 0px;
+    display: flex;
+}
+.month-list ul li {
+    display: inline;
+    margin-right: 70px;
+    font-size: 15px;
+    color: #878C8E;
+}
+li.active {
+    color: #2F2F2F !important;
+    font-size: 18px !important;
+}
+
+
+
+@media only screen and (max-width: 375px)and (max-height: 812px)
+{
+    .image-content {
+        height: 25%
+    }
+}
+@media only screen and (max-width: 375px)and (max-height: 667px)
+{
+    .image-content {
+        height:30%
+    }
+}
+
+@media only screen and (max-width: 360px)
+{
+    .image-content {
+        height: 30%;
+    }
+    .select-title ion-select {
+    
+        font-size: 22px;
+    }
+    .expense-title h1{
+        
+        font-size: 26px;
+    }
+    .expense-select h4
+    {
+        font-size: 16px;
+    }
+    .current-add h5
+    {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 320px)
+{
+    .image-content {
+        height: 35%
+    }
+    .upload-recpt p{
+        font-size: 10px;
+    }
+    .export-recpt p{
+        font-size: 10px;
+    }
+    .add-new-recpt p{
+        font-size: 10px;
+    }
+    .expense-select h4
+    {
+        font-size: 16px;
+    }
+    .current-add h5
+    {
+        font-size: 16px;
+    }
+    .expense-select-detail img{
+        width: 30px;
+    }
+    .expense-title h1{
+        
+        font-size: 24px;
+    }
+    .tool-head label {
+        font-size: 14px;
+    
+    }
+    .select-title ion-select {
+    
+        font-size: 20px;
+    }
+}

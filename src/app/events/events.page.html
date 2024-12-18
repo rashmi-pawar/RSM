@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      My Events
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="card-block" (click)="gotoPage(event)" *ngFor="let event of eventList">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" class="title">{{event.event_name}}</ion-card-title>
+      <ion-card-subtitle class="sub-title">{{formatDate(event.event_date)}}</ion-card-subtitle>
+      {{event.venue_city}}
+    </ion-card-content>
+  </ion-card>
+  <div class="no-events" *ngIf="isDataReceived && eventList.length === 0">
+    <p> You're not currently registered for any events. </p>
+    <a (click)="openUpcomingEvents()">Click here</a> to view Upcoming Events.
+  </div>
+
+</ion-content>

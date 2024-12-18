@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      My Events
+    </ion-title>
+    <ion-buttons slot="end">
+      <div (click)="goto('current-events')">Current Events</div>
+      <ion-icon name="ios-arrow-forward" style="bottom: -2px;position: relative;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="main-title">Upcoming Events</div>
+  <ion-card class="card-block upcoming" *ngFor="let item of upcomingList">
+    <ion-card-content class="main-content">
+      <ion-card-title color="primary" (click)="expandItem(upcomingList, item)" class="title">
+        <div class="name">{{item.event_name}}</div>
+        <ion-icon name="ios-arrow-dropdown" *ngIf="!item?.expanded" class="expand-icon"></ion-icon>
+        <ion-icon name="ios-arrow-dropup" *ngIf="item.expanded ? item.expanded : false" class="expand-icon"></ion-icon>
+      </ion-card-title>
+      <ion-card-subtitle class="sub-title" (click)="expandItem(upcomingList, item)">{{formatDate(item.event_date)}}</ion-card-subtitle>
+      <app-expandable expandHeight="100px" [expanded]="item.expanded ? item.expanded : false">
+        <p *ngIf="item.start_time || item.end_time">
+          {{timeConvert(item.start_time)}} {{item.end_time ? ' - '+timeConvert(item.end_time) : ''}}
+        </p>
+        {{item.venue_street ? item.venue_street : ''}}{{item.venue_city ? ', ' + item.venue_city : ''}}{{item.venue_state ? ', ' + item.venue_state : ''}}{{item.venue_country ? ', ' + item.venue_country : ''}}{{item.venue_zip ? ', ' + item.venue_zip : ''}}
+        <div class="more-info-link" (click)="gotoPage(item)">More information</div>
+      </app-expandable>
+    </ion-card-content>
+  </ion-card>
+  <div class="no-events" *ngIf="isDataReceived && upcomingList.length === 0">
+    <p> You don't have any upcoming events </p>
+  </div>
+  <div class="more-link" (click)="openUpcomingEvents()">See more events on our website</div>
+  <br />
+  <div *ngIf="isDataReceived && pastList.length > 0">
+    <div class="main-title">Past Events</div>
+    <ion-card class="card-block past" (click)="gotoPage(item)" *ngFor="let item of pastList">
+      <ion-card-content class="main-content">
+        <ion-card-title color="primary" class="title">{{item.event_name}}</ion-card-title>
+        <ion-card-subtitle class="sub-title">{{formatDate(item.event_date)}}</ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+    <div class="no-events" *ngIf="isDataReceived && pastList.length === 0">
+      <p> You don't have any past events </p>
+    </div>
+  </div>
+
+</ion-content>

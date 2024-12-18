@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Notification
+    </ion-title>
+    <ion-buttons slot="end" class="more-btn" (click)="presentPopover($event,data)">
+      <ion-icon name="md-more"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="receipt-add" padding *ngIf="showpop" (click)="hidee($event.target)">
+    <div class="pop-list-detail ion-padding-horizontal" id="sh">
+      <ul>
+        <li id="upload" class="popup-li delete" (click)="markAllAsRead()">
+          Mark all as read
+        </li>
+        <li id="upload" class="popup-li delete" (click)="clearAll()">
+          Clear all
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ion-card *ngFor="let notification of notificationList"  [style.background-color]="notification.is_message_viewed == 0 ? '#80808036' : null">
+    <img src="{{notification.image}}" />
+    <ion-card-header style="padding: 0 20px;">
+      <h4 style="margin: 10px 0 0;">{{notification.title}}</h4>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{notification.message}}
+      <p class="notification-date">{{formatDate(notification.schedule_date)}}</p>
+    </ion-card-content>
+  </ion-card>
+  <div class="no-events" *ngIf="isProcessComplete && notificationList.length === 0">
+    <p> No Notifications </p>
+  </div>
+  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

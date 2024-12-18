@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="manualtrip"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Location </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-button color="primary" mode="ios" class="detect-loc" expand="full" (click)="startTracking()">
+    <ion-icon name="search"></ion-icon>Detect my location
+  </ion-button>
+
+  <ion-item lines="none" no-padding class="search-point">
+    <ion-searchbar no-padding [(ngModel)]="autocomplete.input1" (ionInput)="updateSearchResults1()"
+      placeholder="Choose Starting point"></ion-searchbar>
+  </ion-item>
+
+  <ion-list [hidden]="autocompleteItems1.length == 0">
+    <ion-item lines="none" no-padding *ngFor="let item1 of autocompleteItems1" tappable
+      (click)="selectSearchResult1(item1)">
+      {{ item1.description }}
+    </ion-item>
+  </ion-list>
+
+  <ion-item lines="none" no-padding class="search-point">
+    <ion-searchbar no-padding [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()"
+      placeholder="choose destination"></ion-searchbar>
+  </ion-item>
+
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item lines="none" no-padding *ngFor="let item of autocompleteItems" tappable
+      (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+
+  <ion-item lines="none" no-padding>
+    <ion-label color="primary"> Mode of Travel:</ion-label>
+    Driving
+
+  </ion-item>
+  <ion-item *ngIf="distance != '' " lines="none" no-padding>
+    <ion-text color="primary">
+      Distance : {{distance}} {{unit}}
+    </ion-text>
+  </ion-item>
+
+
+
+  <ion-row>
+    <ion-col no-padding>
+      <ion-button expand="full" color="primary" (click)="calculateAndDisplayRoute()" *ngIf="end != ''" mode="ios">View
+        Map</ion-button>
+    </ion-col>
+    <ion-col no-padding>
+      <ion-button expand="full" color="primary" (click)="save()" *ngIf="end != '' && isSave" mode="ios">Save
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <div #map id="map" [ngStyle]="{'display':isSubmit? 'block' : 'none' }"></div>
+
+</ion-content>

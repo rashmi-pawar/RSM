@@ -1,0 +1,32 @@
+ion-content {
+  --ion-background-color: #fafafa;
+}
+ion-list {
+  padding: 10px;
+}
+ion-item {
+  --ion-background-color: #fff;
+  --inner-padding-top: 15px !important;
+  --inner-padding-bottom: 15px !important;
+  padding: 1px;
+}
+
+ion-label {
+  margin-left: 30px;
+  font-size: 22px !important;
+  color: #62666b !important;
+}
+
+.social-icons {
+  .social-title {
+    font-size: 22px;
+    color: #62666b !important;
+    margin: 1px;
+  }
+  .social-icon {
+    margin-top: 25px;
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+}

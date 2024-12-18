@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Important Tax Information
+    </ion-title>
+    <ion-buttons slot="end" class="heart-btn">
+      <ion-icon name="heart" (click)="addToFavourites('Important Tax Information', 'tax-information')" *ngIf="isFav == false">
+      </ion-icon>
+      <ion-icon name="heart" (click)="removefavourites('tax-information')" *ngIf="isFav == true" style="color: red">
+      </ion-icon>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="taxes?.length">
+    <ion-list lines="none" class="calculate-list">
+      <ion-item *ngFor="let tax of taxes" (click)="gotourl(tax)">
+        <ion-img src="assets/img/tax/{{ tax?.id }}.png" slot="start"></ion-img>
+        <ion-label>{{ tax?.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <p *ngIf="taxes?.length < 1 && isProgress">No data found</p>
+</ion-content>

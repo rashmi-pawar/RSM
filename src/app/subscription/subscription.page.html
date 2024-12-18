@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Subscription List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <div *ngIf="list?.length">
+      <ion-item *ngFor="let listdata of list;let i = index" lines="none" no-padding>
+        <ion-label>{{listdata?.title}}<br>
+          <p>{{listdata?.details}}</p>
+        </ion-label>
+
+        <ion-checkbox slot="end" [checked]="checkedlist.indexOf(listdata.id) >= 0" (click)="checked(listdata.id,i)">
+        </ion-checkbox>
+      </ion-item>
+    </div>
+    <div *ngIf="!list?.length && isshow" class="nodata"> No data found!</div>
+  </ion-list>
+  <ion-button color="primary" expand="full" (click)="subscribe()" *ngIf="subscribeId.length>0" mode="ios">SAVE
+  </ion-button>
+</ion-content>

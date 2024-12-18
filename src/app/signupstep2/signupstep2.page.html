@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="white">
+    <ion-buttons slot="start">
+      <ion-back-button color="primary" defaultHref="signup"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="dark">
+      Registration
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div class="ion-padding-horizontal">
+    <form [formGroup]="onAddForm">
+      <ion-item class="register-data" no-padding lines="none">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" inputmode="password" formControlName="password" minlength="8"></ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.password.hasError('required') && onAddForm.controls.password.touched">
+        <p class="text08">Please enter password.</p>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.password.hasError('pattern') && onAddForm.controls.password.touched">
+        <p class="text08">Password must contain at least 8 characters, uppercase, lowercase, special character and number</p>
+      </ion-item>
+
+      <ion-item class="register-data" no-padding lines="none">
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input type="password" inputmode="password" formControlName="confirmpassword" minlength="8"></ion-input>
+      </ion-item>
+      <ion-item lines="none" no-padding
+        *ngIf="onAddForm.controls.confirmpassword.hasError('required') && onAddForm.controls.confirmpassword.touched">
+        <p class="text08">Please enter confirm password.</p>
+      </ion-item>
+      <div class="ion-padding-vertical">
+        <ion-button color="primary" expand="block" mode="md" (click)="signUp()" [disabled]="!onAddForm.valid">Register
+        </ion-button>
+      </div>
+    </form>
+    <div class="log-here">
+      <p>Already have an account?<span class="blue-color" (click)="goto('login')">Login here </span></p>
+    </div>
+  </div>
+</ion-content>

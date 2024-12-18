@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Live Tracking </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-button color="success" (click)="startLiveTracking()" mode="ios">
+    <ion-icon name='pin' style="margin-right: 5px;"></ion-icon> Start
+  </ion-button>
+  <ion-button color="danger" (click)="stopLiveTracking()" mode="ios">
+    <ion-icon name='pin' style="margin-right: 5px;"></ion-icon>Stop
+  </ion-button>
+  <p *ngIf="distance !=''"><b>Distance : </b> {{distance}}</p>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Grad Week 2021 Agenda
+    </ion-title>
+    <ion-buttons slot="end">
+      <div (click)="gotoFAQ()">FAQ</div>
+      <ion-icon name="ios-arrow-forward" style="bottom: -2px;position: relative;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item class="state-selection" lines="none">
+    <ion-label>Pick your state</ion-label>
+    <ion-select [(ngModel)]="selectedState">
+      <ion-select-option *ngFor="let item of gradWeekAgenda" [value]="item.title">{{item.title}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+    <!--<div *ngFor="let item of gradWeekAgenda">
+        <p *ngIf="item.title === selectedState" [innerHTML]="item.value | safeHtml"></p>
+    </div>-->
+  <div *ngIf="gradWeekAgenda && gradWeekAgenda[0].title === selectedState">
+    <pinch-zoom>
+      <p class="innerHtmltd" [innerHTML]="gradWeekAgenda[0].value | safeHtml"></p>
+    </pinch-zoom>
+  </div>
+  <div *ngIf="gradWeekAgenda && gradWeekAgenda[1].title === selectedState">
+    <pinch-zoom>
+      <p class="innerHtmltd" [innerHTML]="gradWeekAgenda[1].value | safeHtml"></p>
+    </pinch-zoom>
+  </div>
+  <div *ngIf="gradWeekAgenda && gradWeekAgenda[2].title === selectedState">
+    <pinch-zoom>
+      <p class="innerHtmltd" [innerHTML]="gradWeekAgenda[2].value | safeHtml"></p>
+    </pinch-zoom>
+  </div>
+  <div *ngIf="gradWeekAgenda && gradWeekAgenda[3].title === selectedState">
+    <pinch-zoom>
+      <p class="innerHtmltd" [innerHTML]="gradWeekAgenda[3].value | safeHtml"></p>
+    </pinch-zoom>
+  </div>
+
+</ion-content>

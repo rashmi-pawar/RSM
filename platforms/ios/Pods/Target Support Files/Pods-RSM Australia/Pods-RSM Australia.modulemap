@@ -1,0 +1,6 @@
+framework module Pods_RSM_Australia {
+  umbrella header "Pods-RSM Australia-umbrella.h"
+
+  export *
+  module * { export * }
+}

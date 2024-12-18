@@ -1,0 +1,279 @@
+
+.new-odometer
+{
+    margin: 20px 0px;
+}
+.new-odo-detail p{
+color: #2F2F2F;
+font-size: 16px;
+margin: 0px;
+margin-bottom: 5px;
+}
+.new-odo-detail img
+{
+    width: 34px;
+}
+span.color-grey1{
+    font-size: 12px;
+    color: #62666B;
+}
+.edit-btn
+{
+    text-align: center;
+}
+.edit-btn span
+{
+    display: block;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.location-detail h5
+{
+margin: 0px;
+color: #2f2f2f;
+font-size: 16px;
+margin-bottom: 5px;
+}
+.location-detail p
+{
+margin: 0px;
+color: #62666B;
+font-size: 12px;
+}
+.location-detail img{
+    width: 14px;
+    margin-top: 10px;
+}
+.location-row
+{
+    margin-bottom: 20px;
+}
+
+.location-addition {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    padding:30px 20px;
+    top: 50px;
+    background: rgba(0,0,0,.5);
+}
+
+.addition-detail
+{
+    background-color: white;  
+}
+.addition-detail h1
+{
+    color: #009CDE;
+    margin-left: 15px;
+    font-size: 23px;
+    margin-top: 0px;
+}
+ion-label
+{
+    font-size: 12px !important;
+
+}
+ion-select{
+    border-bottom: 1px solid #D8D8D8;
+}
+.current-loc {
+    margin-top: 15px;
+    border-bottom: 1px solid #D8D8D8;
+}
+.current-loc p ion-icon
+{
+    color: #878C8E;
+    margin-right: 10px;
+}
+.current-loc p
+{
+    color: #2F2F2F;
+    font-size: 15px;
+}
+.sub-text ion-label{
+    font-size: 8px !important;
+    color: #2F2F2F !important;
+}
+.loc-btn
+{
+    margin-top: 10px;
+}
+button.cancle-btn {
+    background: transparent;
+    border: 1px solid #62666B;
+    width: 100%;
+    color: #62666B;
+    height: 35px;
+    border-radius: 8px;
+}
+button.save-btn {
+    background: #009CDE;
+    width: 100%;
+    color: #fff;
+    height: 35px;
+    border-radius: 8px;
+}
+button.disable-btn {
+    background: #009cde78;
+}
+
+.odometer-add {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    padding:30px 20px;
+    top: 0px;
+    background: rgba(0,0,0,.5);
+}
+.odometer-detail
+{
+    background-color: white;  
+}
+.odometer-detail h1
+{
+    color: #009CDE;
+    margin-left: 15px;
+    font-size: 23px;
+    margin-top: 0px;
+}
+ion-datetime {
+    border-bottom: 1px solid #d5d5d5;
+}
+.odometer-time {
+    padding: 15px 0px;
+}
+.odometer-date
+{
+    padding-bottom: 15px;
+}
+.odometer-reading
+{
+    padding-bottom: 15px;
+}
+.odometer-reading ion-input
+{
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.vehicle-form ion-input
+{
+    border-bottom: 1px solid #d5d5d5;
+}
+.add-new-vehicle {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    padding:30px 20px;
+    top: 50px;
+    background: rgba(0,0,0,.5);
+}
+.vehicle-detail
+{
+    background-color: white;  
+}
+.vehicle-detail h1
+{
+    color: #009CDE;
+    margin-left: 15px;
+    font-size: 23px;
+    margin-top: 0px;
+}
+.track-detail
+{
+    margin-bottom: 20px;
+}
+.odometer-setting h1 {
+    display: inline;
+    margin: 0px;
+    font-size: 18px;
+    color: #2F2F2F;
+}
+.odometer-setting ion-select {
+    display: inline-flex;
+    float: right;
+    padding-top: 0;
+    border: none;
+    font-size: 12px;
+    color: #62666B;
+}
+ion-segment-button{
+    border: none;
+    background: transparent;
+}
+
+
+
+
+@media only screen and (max-width:375px)
+{
+    .trip-list li
+    {
+        margin-right: 30px;
+    }
+}
+@media only screen and (max-width:360px)
+{
+    .trip-list li
+    {
+        font-size: 13px;
+        margin-right: 31px;
+    }
+}
+@media only screen and (max-width:320px)
+{
+    .trip-list li
+    {
+        font-size: 12px;
+        margin-right: 24px;
+    }
+}
+.vehicle-size span
+{
+    font-size: 14px;
+    color: #878C8E;
+}
+.vehicle-size h5
+{
+    margin: 0px;
+    font-size: 16px;
+    color: #2f2f2f;
+}
+.vehicle-size p
+{
+    font-size: 14px;
+    color: #62666B;
+    margin: 3px 0 0;
+}
+.vehicle-size img
+{
+    width: 40px;
+}
+span.blue-color {
+    color: #009CDE !important;
+    font-size: 13px !important;
+}
+span.red-color {
+    color: #FF5357 !important;
+    font-size: 13px !important;
+}
+
+.vehicle-size {
+    margin-top: 25px;
+}
+.general-setting h1
+{
+    color: #383838;
+    font-size: 18px;
+}
+.general-setting ion-label {
+    font-size: 16px !important;
+}
+p.nodata {
+    margin-top: 20px !important;
+    color: #9fa7b3 !important;
+    font-size: 16px !important;
+    }

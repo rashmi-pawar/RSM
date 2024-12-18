@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Receipt List</ion-title>
+    <ion-buttons slot="end" class="delete-btn" (click)="deleteReceipt()">
+      <ion-icon name="md-trash"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="expense-detail">
+      <div class="expense-select grey-color" padding>
+        <div class="expense-select-detail">
+          <div>
+            <div *ngIf="lists.length">
+              <ion-row *ngFor="let list of lists" class="rowss" >
+                <ion-col no-padding size="1">
+                  <ion-checkbox color="primary" style="margin-top: 12px;" (ionChange)="selectReceipt($event, list)"></ion-checkbox>
+                </ion-col>
+                <ion-col no-padding size="11" style="padding-left: 10px;">
+                  <ion-row (click)="details(list)">
+                  <ion-col no-padding size="12">
+                    <h4>{{list.expense_type}}</h4>
+                  </ion-col>
+                  <ion-col no-padding size="6">
+                    <h5>{{list.date | date : 'dd-MMMM-yyyy'}}</h5>
+                  </ion-col>
+                  <ion-col no-padding size="6">
+                    <p class="green-color">{{list.amount}}</p>
+                  </ion-col>
+                  <ion-col no-padding size="12">
+                    <span>{{list.description}}</span>
+                  </ion-col>
+                </ion-row>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div *ngIf="!lists.length" class="nodata">
+              No Record Found!
+            </div>
+          </div>
+          <!-- <div *ngIf="status == false">
+            <div *ngIf="newlist.length && status == false">
+              <ion-row padding *ngFor="let listing of newlist" class="rowss" (click)="details(listing)">
+                <ion-col no-padding size="12">
+                  <h4>{{listing.expense_type}}</h4>
+                </ion-col>
+                <ion-col no-padding size="6">
+                  <h5>{{listing.date | date : 'dd-MMMM-yyyy'}}</h5>
+                </ion-col>
+                <ion-col no-padding size="6">
+                  <p class="green-color">{{listing.amount}}</p>
+                </ion-col>
+                <ion-col no-padding size="12">
+                  <span>{{listing.description}}</span>
+                </ion-col>
+              </ion-row>
+            </div>
+            <div *ngIf="!newlist.length" class="nodata">
+              No Record Found!
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filter" padding *ngIf="showfiler">
+    <div class="select-filter" padding>
+      <h1 color="primary">Filters</h1>
+
+      <div class="filter-select">
+        <ion-label>Search</ion-label>
+        <ion-input [(ngModel)]="filter.title"> </ion-input>
+      </div>
+      <div class="filter-select">
+        <ion-label>Start Date</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="filter.startDate"> </ion-datetime>
+      </div>
+      <div class="filter-select">
+        <ion-label>End Date</ion-label>
+        <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="filter.endDate"> </ion-datetime>
+      </div>
+
+      <div class="filter-btn">
+        <ion-row>
+          <ion-col size="6">
+            <button type="button" class="can-btn" (click)="cancel()">Cancel</button>
+
+          </ion-col>
+          <ion-col size="6">
+            <button type="button" class="app-btn" (click)="filerdata()">Apply</button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

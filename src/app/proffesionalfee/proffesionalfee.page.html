@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="dashboard"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{heading}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="image-content">
+        <div class="tool-head" padding>
+            <ion-row class="ion-padding-horizontal">
+                <ion-col no-padding size="6">
+                    <div class="expense-title ion-padding-horizontal">
+                        <label for="expense">Total Expenses</label>
+                        <h1>{{totalamount}}</h1>
+                    </div>
+                </ion-col>
+                <ion-col no-padding size="6">
+                    <div class="select-title">
+                        <label for="expense"> Financial Year</label>
+                        <ion-select [(ngModel)]="year" (ionChange)="selectYear($event)">
+                            <ion-select-option *ngFor="let yearObj of yearArray" value="{{yearObj}}">{{yearObj}}
+                            </ion-select-option>
+                        </ion-select>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="expense-detail" padding>
+            <div class="expense-select grey-color" padding>
+                <div class="expense-select-detail">
+                    <div *ngIf="lists.length">
+                        <ion-row padding *ngFor="let list of lists" (click)="details(list)">
+                            <ion-col no-padding size="6">
+                                <h5>{{list.date | date : 'dd-MMMM-yyyy'}}</h5>
+                            </ion-col>
+                            <ion-col no-padding size="6">
+                                <p class="green-color">{{list?.amountText}}</p>
+                            </ion-col>
+                            <ion-col no-padding size="12">
+                                <span>{{list.description}}</span>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                    <div *ngIf="!lists.length" class="nodata">
+                        No Record Found!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,104 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="{{back}}"></ion-back-button>
+        </ion-buttons>
+        <ion-title mode="ios">Trip logbook</ion-title>
+        <ion-buttons slot="end" class="heart-btn">
+            <ion-icon name="heart" (click)="addToFavourites('GPS Logbook', 'triplogbook')" *ngIf="isFav == false">
+            </ion-icon>
+            <ion-icon name="heart" (click)="removefavourites('triplogbook')" *ngIf="isFav == true" style="color: red">
+            </ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="image-content">
+        <div padding>
+            <ion-row>
+                <ion-col size="6" class="ion-padding-horizontal" (click)="goto('tripsetting')">
+                    <div class="select-title">
+                        <ion-icon name="settings" color="light"></ion-icon>
+                        <ion-col>
+                            <label>Trip Settings</label>
+                        </ion-col>
+                    </div>
+                </ion-col>
+                <ion-col size="6" class="ion-padding-horizontal">
+                    <div class="select-title">
+                        <label for="expense">Trip Category</label>
+                        <ion-select [(ngModel)]="filter" (ionChange)="selectVal()">
+                            <ion-select-option value="personal">Personal</ion-select-option>
+                            <ion-select-option value="business">Business</ion-select-option>
+                        </ion-select>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div class="chart-data" padding>
+            <div class="month-data" padding>
+                <ul>
+                    <li class="abc " (click)="barchart($event.target, 'week')">Week</li>
+                    <li class="abc " (click)="barchart($event.target, 'month')">Month</li>
+                    <li class="abc active" (click)="barchart($event.target, 'year')">
+                        Year
+                    </li>
+                </ul>
+                <canvas id="myChart" #myChart></canvas>
+            </div>
+            <div class="trips-link">
+                <ion-row>
+                    <ion-col size="4" no-padding class="start-pic">
+                        <img src="assets/icon/car1.png" (click)="goto('starttrip')" />
+                        <p>Start trip</p>
+                    </ion-col>
+                    <ion-col size="4" no-padding (click)="goto('logtrip')">
+                        <img src="assets/icon/compass.png" />
+                        <p>Log trips</p>
+                    </ion-col>
+                    <ion-col size="4" no-padding (click)="goto('triphistory')">
+                        <img src="assets/icon/baseline-history.png" />
+                        <p>Trip history</p>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+            <div class="trip-detail" padding>
+                <h5>Recent trips</h5>
+                <div *ngIf="items.length>0">
+                    <ion-row class="recpt-detail" *ngFor="let list of items" (click)="detail(list)">
+                        <ion-col no-padding size="6">
+                            <img src="/assets/icon/car.png" />
+                        </ion-col>
+                        <ion-col no-padding size="6" class="right-side">
+                            <p>
+                                {{ list.startdate | date: "dd/MM/yyyy" }}
+                                <span> - {{ list.starttime | date: "hh : mm a" }} </span>
+                            </p>
+                        </ion-col>
+                        <ion-col no-padding size="6">
+                            <img src="assets/icon/Oval Copy 6.png" class="oval-design" />
+                        </ion-col>
+                        <ion-col no-padding size="6" class="right-side">
+                            <img src="assets/icon/Oval.png" class="oval-design" />
+                        </ion-col>
+                        <ion-col no-padding size="4">
+                            <span>{{ list.origin }}</span>
+                        </ion-col>
+                        <ion-col no-padding size="4" class="dark">
+                            <span>{{ list.distance }} {{ list.unit }}</span>
+                        </ion-col>
+                        <ion-col no-padding size="4" class="right-side">
+                            <span>{{ list.destination }}</span>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div *ngIf="!items.length">
+                    <ion-row>
+                        <p class="nodata">No Data Found</p>
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="viewreceipt"></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Expense</ion-title>
+    <ion-buttons slot="end" class="more-btn" (click)="presentPopover($event,data)">
+      <ion-icon name="md-more"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="receipt-add" padding *ngIf="showpop" (click)="hidee($event.target)">
+    <div class="pop-list-detail ion-padding-horizontal" id="sh">
+      <ul>
+        <li id="upload" class="popup-li add">
+          Add New Receipt
+        </li>
+        <li id="export" class="popup-li edit">
+          Edit Receipt
+        </li>
+        <li id="upload" class="popup-li delete" (click)="presentDeleteConfirm()">
+          Delete
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+  <div class="image-content">
+    <div class="receipt-img">
+      <img src="../../assets/img/photocopy2.png" *ngIf="!data?.fullimage">
+      <img [src]="getImgContent(data.fullimage)" *ngIf="data?.fullimage"
+        onerror="this.onerror=null;this.src='../../assets/img/photocopy2.png';">
+    </div>
+    <ion-row class="return" padding>
+      <ion-col no-padding size="6">
+        <div class="expense-title ion-padding-horizontal">
+          <label for="expense"> Amount</label>
+          <h1>{{data?.amount}}</h1>
+        </div>
+      </ion-col>
+      <ion-col no-padding size="6">
+        <div class="select-title">
+          <label for="expense">You can claim on your tax return amount</label>
+          <h5>{{data?.claim_tax_return}}</h5>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </div>
+  <div class="expense-detail" padding>
+    <ion-row>
+      <ion-col no-padding size="2">
+        <ion-icon name="time"></ion-icon>
+      </ion-col>
+      <ion-col no-padding size="10">
+        <h5>{{data?.date |date: 'dd-MMM-yyyy'}}</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="expense-detail" padding>
+    <ion-row>
+      <ion-col no-padding size="2">
+        <img src="assets/icon/gst.png" height="30" />
+      </ion-col>
+      <ion-col no-padding size="10">
+        <h5>{{data?.totalgst}}(GST)</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="expense-detail" padding>
+    <ion-row>
+      <ion-col no-padding size="2">
+        <ion-icon name="card"></ion-icon>
+      </ion-col>
+      <ion-col no-padding size="10">
+        <h5>{{data?.payment_type}}</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="expense-detail" padding>
+    <ion-row>
+      <ion-col no-padding size="2">
+        <ion-icon name="time"></ion-icon>
+      </ion-col>
+      <ion-col no-padding size="10">
+        <h5>{{data?.expense_type}}</h5>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="expense-detail" padding>
+    <ion-row>
+      <ion-col no-padding size="2">
+        <ion-icon name="time"></ion-icon>
+      </ion-col>
+      <ion-col no-padding size="10">
+        <h5>Notes</h5>
+        <p>{{data?.description}}</p>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

@@ -1,0 +1,88 @@
+ion-content {
+  --ion-background-color: #FFFFFF;
+}
+.filter-block {
+  background: #FFF;
+  margin: 10px;
+  padding: 10px;
+  color: #57585b;
+  border: 1px solid #399dde;
+  .options{
+    margin-top: 10px;
+    position: relative;
+    .active{
+      color: #51b14b;
+    }
+    .first{
+      padding-left: 0 !important;
+    }
+    .last{
+      border-right: none !important;
+    }
+    .block{
+      padding: 0 13px;
+      border-right: 1px solid;
+      position: relative;
+    }
+    .sort-icon{
+      top: 3px;
+      right: 0px;
+      position: relative;
+    }
+  }
+}
+.more-link {
+  text-align: center;
+  color: #399dde;
+  text-decoration: underline;
+}
+.more-info-link{
+  color: blue;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+.expand-icon{
+  position: absolute;
+  right: -5px;
+  font-size: 35px;
+  color: #399dde;
+  top: 5px;
+}
+.card-block{
+  margin: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.04);
+  border-radius: 0;
+  border: 1px solid #399dde;
+  .main-content{
+    padding: 15px;
+    .title{
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      font-weight: normal;
+      .name{
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+    }
+    .sub-title{
+      margin-top: 4px;
+      text-transform: none;
+      color: #57585b;
+      font-weight: normal;
+      font-size: 14px;
+    }
+  }
+}
+.upcoming{
+  text-align: center;
+  .title{
+    color: #51b14b;
+    text-align: center;
+  }
+}
+.no-events{
+  padding: 30px;
+  text-align: center;
+  color: #399dde;
+}

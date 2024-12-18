@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="action('cancel')">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Disclaimer-Data Storage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="success" padding *ngIf="showSuccess">
+    <div class="success-detail">
+      <img src="assets/img/photocopy2.png" *ngIf="!image">
+      <img src="{{image}}" *ngIf="image">
+      <p>You have successfully added<br /> a new receipt</p>
+      <ion-row class="success-btn">
+        <ion-col no-padding size="12" (click)="skip()">
+          <p>Ok</p>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="list-content" padding>
+    <label>Message</label>
+    <ion-col class="disclaimer-content">
+      <br>
+      <br>
+      <label>
+        Please note that all data is stored directly on your mobile device and is not automatically stored in
+        another location.
+      </label>
+      <br>
+      <br>
+      <label>
+        If your mobile device is lost, stolen or replaced, your data will not be recoverable or transferrable unless it
+        has been recently backed up or exported. It is highly recommended that you regularly backup your device, send
+        data to the cloud and/or export data to avoid permanently losing your records. To send your data to the cloud
+        via the iCloud or Dropbox options, you will first be prompted to create or log into your account.
+      </label>
+      <br>
+      <br>
+      <ion-row class="checkbox-label">
+        <ion-checkbox checked="{{checked}}" (ionChange)="checkbox($event)"></ion-checkbox>
+        <ion-label> Don't show this again</ion-label>
+      </ion-row>
+    </ion-col>
+  </div>
+
+  <div class="action-btn">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col size="5">
+        <ion-button expand="block" color="medium" mode="ios" (click)="action('cancel')">Cancel
+        </ion-button>
+      </ion-col>
+      <ion-col size="5">
+        <ion-button expand="block" color="primary" mode="ios" (click)="action('okay')">Ok</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

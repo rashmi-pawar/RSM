@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      Calculators
+    </ion-title>
+    <ion-buttons slot="end" class="heart-btn">
+      <ion-icon name="heart" (click)="addToFavourites('Calculators', 'calculator')" *ngIf="isFav == false"></ion-icon>
+      <ion-icon name="heart" (click)="removefavourites('Calculators', 'calculator')" *ngIf="isFav == true"
+        style="color: red"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="calculators?.length">
+    <ion-list lines="none" class="calculate-list">
+      <ion-item *ngFor="let calculator of calculators" (click)="gotourl(calculator)">
+        <ion-img src="assets/img/calculator/{{ calculator?.id }}.png" slot="start"></ion-img>
+        <ion-label text-wrap>{{ calculator?.title }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

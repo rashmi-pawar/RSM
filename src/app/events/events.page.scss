@@ -1,0 +1,22 @@
+ion-content {
+  --ion-background-color: #fafafa;
+}
+.card-block{
+  margin: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.04);
+  .main-content{
+    padding: 15px;
+    .title{
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      font-weight: normal;
+    }
+    .sub-title{
+      margin-top: 4px;
+    }
+  }
+}
+.no-events{
+  padding: 30px;
+}

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="{{back}}"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">
+      {{feedDetail?.title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of feedDetail.items">
+    <h4 class="title">{{item.title}}</h4>
+    <ion-row>
+      <ion-col>
+        <p class="author">{{item.author}}</p>
+      </ion-col>
+      <ion-col>
+        <p class="date">{{item.pubDate | date: 'd MMMM y'}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-card-content class="description">
+      <div class="innerHtmltd" [innerHTML]="item.description | safeHtml"></div>
+      <p (click)="openUrl(item.link)" class="read-more">Read more</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

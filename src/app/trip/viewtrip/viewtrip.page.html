@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Trip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="view-trip-detail" padding>
+    <div class="full ion-padding-vertical">
+      <div class="time-dist">
+        <ion-row>
+          <ion-col size="6" no-padding class="border-rite">
+            <p><span>Time:</span>&nbsp;{{totalTime}}</p>
+          </ion-col>
+          <ion-col size="6" no-padding>
+            <p><span>Distance:</span>&nbsp;{{data.distance}} {{data.unit}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-item lines="none">
+        <div class="trip-detail">
+          <ion-row class="start-date">
+            <ion-col size="2" no-padding>
+              <img class="location-icon" src="assets/icon/locate.png">
+            </ion-col>
+            <ion-col size="10" no-padding>
+              <p>{{data.origin}}</p>
+              <ion-row class="date-time">
+                <ion-col size="6" no-padding>
+                  <ion-label position="stacked">Start Date</ion-label>
+                  <p>{{data.startdate| date: 'dd/MM/yyyy'}}</p>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                  <ion-label position="stacked">Start Time</ion-label>
+                  <p> {{data.starttime| date: 'HH:mm'}}</p>
+                </ion-col>
+              </ion-row>
+              <img *ngIf="data.photoStart" [src]="getImgContent(data.viewStartImage)">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2" no-padding>
+              <img class="location-icon" src="assets/icon/locate.png">
+            </ion-col>
+            <ion-col size="10" no-padding>
+              <p>{{data.destination}}</p>
+
+              <ion-row class="date-time">
+                <ion-col size="6" no-padding>
+                  <ion-label>End Date</ion-label>
+                  <p> {{data.enddate| date: 'dd/MM/yyyy'}}</p>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                  <ion-label>End Time</ion-label>
+                  <p>{{data.endtime| date: 'HH:mm'}}</p>
+                </ion-col>
+              </ion-row>
+              <img *ngIf="data.photoEnd" [src]="getImgContent(data.viewEndImage)">
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-item>
+      <div class="trip-type ion-padding-horizontal">
+        <ion-row>
+          <ion-col size="12">
+            <ion-label>Vehicle Name</ion-label>
+            <p>{{vehicle}}</p>
+          </ion-col>
+          
+          <ion-col size="12">
+            <ion-label>Trip Category</ion-label>
+            <p>{{data.vehicleType | titlecase}}</p>
+          </ion-col>
+          <ion-col size="12">
+            <ion-label>Trip details</ion-label>
+            <p>{{data.notes}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
+      <!-- <div class="trip-typ-detail ion-padding-horizontal">
+        <ion-label>
+          Trip details
+        </ion-label>
+        <p>{{data.notes}}</p>
+      </div> -->
+    </div>
+  </div>
+  <div class="trip-btn" padding>
+    <button type="button" class="edit-btn" (click)="screenShot()">Share</button>&nbsp;&nbsp;
+    <button type="button" class="fav-btn" (click)="deleteTrip(data.id)">Delete</button>
+    <button type="button" class="edit-btn" (click)="edit(data)">Edit trip</button>
+  </div>
+</ion-content>

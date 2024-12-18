@@ -1,0 +1,41 @@
+.profile-pic{
+  position: relative;
+}
+.avtar{
+  border-radius: 50px;
+  border: 2px solid #000000;
+}
+.avtar-icon {
+  position: absolute;
+  bottom: 6px;
+  right: 0px;
+  font-size: 13px;
+  color: #ffffff;
+  background: #000000;
+  border-radius: 20px;
+  padding: 2px;
+}
+.filter
+{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    // padding:50px 20px;
+    top: 0px;
+    left: 0;
+    background: rgba(0,0,0,.8);
+    display: table;
+    .viewer{
+      display: table-cell;
+      vertical-align: middle;
+    }
+}
+.close-btn{
+  text-align: center;
+  ion-button{
+    --background: transparent;
+    font-size: 24px;
+    height: 30px;
+  }
+}

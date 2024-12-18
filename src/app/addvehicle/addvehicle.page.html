@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="settings"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Vehicle</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <form [formGroup]="onAddForm" class="list-form">
+    <ion-item class="log-data" no-padding lines="none">
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input class="login-inputt" type="text" formControlName="vehiclename">
+      </ion-input>
+    </ion-item>
+    <ion-item no-padding lines="none"
+      *ngIf="onAddForm.controls.vehiclename.hasError('required') && onAddForm.controls.vehiclename.touched">
+      <p class="text08">Sorry, field name is required!</p>
+    </ion-item>
+    <ion-item class="log-data" no-padding lines="none">
+      <ion-label position="stacked">Type</ion-label>
+      <ion-input class="login-inputt" type="text" formControlName="vehicletype">
+      </ion-input>
+    </ion-item>
+    <ion-item lines="none" no-padding
+      *ngIf="onAddForm.controls.vehicletype.hasError('required') && onAddForm.controls.vehicletype.touched">
+      <p class="text08">Sorry, field type is required!</p>
+    </ion-item>
+  </form>
+  <div>
+    <ion-button color="primary" class="log-btn" mode="ios" icon-left size="medium" expand="full" (click)="addVehicle()"
+      [disabled]="!onAddForm.valid" tappable>
+      SAVE
+    </ion-button>
+  </div>
+
+</ion-content>

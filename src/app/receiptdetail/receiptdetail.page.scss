@@ -1,0 +1,163 @@
+// .image-content
+// {
+//     // height: 292px;
+//     height: 45%;
+// }
+.expense-title label
+{
+    color: #fff;
+    font-size: 16px;
+}
+// .delete {
+//     position: absolute;
+//     width: 100%;
+//     z-index: 99;
+//     height: 100%;
+//     background: rgba(0,0,0,.5);
+// }
+.delete-detail
+{
+    background-color: white;  
+}
+.expense-title h1
+{
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+}
+.select-title h5
+{
+    font-size: 20px;
+    margin-top: 6px;
+    color: #fff;
+}
+.expense-title {
+    border-right: 1px solid #D4E9F8;
+}
+.select-title {
+    padding-left: 20px;
+}
+.select-title label
+{
+    color: #fff;
+    font-size: 12px;
+}
+.receipt-img {
+    position: relative;
+    text-align: center;
+    background: #fff;
+}
+.receipt-img img {
+    // width: auto;
+    // height: 195px;
+    max-width: 200px;
+    max-height: 200px;
+}
+.expense-detail
+{
+    padding-top: 20px;
+}
+.expense-detail ion-icon
+{
+    color:#727272;
+    font-size: 25px;
+}
+.expense-detail h5
+{
+    margin:0px;
+    color:#383838;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.expense-detail p
+{
+    font-size: 15px;
+    color: #62666B;
+    margin: 10px 0px;
+}
+.expense-detail a
+{
+    font-size: 15px;
+    color: #029dde;
+}
+.receipt-add {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    padding-top: 5px;
+    padding-right: 5px;
+}
+
+
+.pop-list-detail
+{
+    width: 170px;
+    background-color: white;
+    right: 0;
+    float: right;
+    border-radius: 5px;
+    
+}
+
+.pop-list-detail ul {
+    padding-left: 0px;
+}
+.pop-list-detail ul li {
+    list-style: none;
+    line-height: 25px;
+    color: #62666B;
+    font-size: 18px;
+    padding: 5px 0px;
+}
+
+
+.delete-detail h5 {
+    margin: 0px;
+    color: #FF3057;
+    font-size: 23px;
+}
+.delete-detail p {
+    color: #62666B;
+    font-size: 18px;
+}
+button.canclebtn {
+    background: transparent;
+    border: 1px solid #62666B;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #62666b;
+}
+button.deletebtn {
+    background: #FF3057;
+    padding: 10px 33px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 1px solid #FF3057;
+}
+
+
+@media only screen and (max-width: 360px)
+ {
+
+    .expense-title h1
+    {
+        font-size: 26px;
+    }
+}
+@media only screen and (max-width: 320px)
+{
+    
+    .select-title h5 {
+        font-size: 18px;
+    }
+    .expense-title h1
+    {
+        font-size: 24px;
+    }
+    
+}

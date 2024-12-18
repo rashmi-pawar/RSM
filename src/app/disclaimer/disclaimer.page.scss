@@ -1,0 +1,77 @@
+.close-btn
+{
+    font-size: 25px;
+    margin-right: 10px;
+}
+
+.list-content label {
+    color: #878C8E ;
+    font-size: 12px ;
+}
+.checkbox-label ion-label {
+    margin-left: 15px;
+    color: #878C8E ;
+    font-size: 12px ;
+}
+.disclaimer-content label {
+    font-size: 14px !important;
+    color: #62666b !important;
+}
+
+.action-btn {
+    padding: 8px;
+}
+
+
+label {
+    color: #878C8E ;
+    font-size: 12px ;
+}
+
+.checkbox-label input[type=checkbox]:checked {
+    color: #009cde;
+}
+
+.success {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    height: 100%;
+    top: 23%;
+    background: rgba(0,0,0,.5);
+}
+
+.success-detail
+{
+    text-align: center;
+    background-color: white;
+   
+}
+.success-detail h4
+{
+    font-weight: 600;
+    font-size: 18px;
+    color: #4A4A4A;
+    margin-top: 35px;
+}
+.success-detail p{
+    color: #4A4A4A;
+    font-size: 18px;
+}
+.success-btn
+{
+    background: #009cde;
+}
+.success-btn p {
+    color: #fff !important;
+    font-size: 16px !important;
+}
+.success-btn h5 {
+    color: #fff !important;
+    font-size: 21px !important;
+}
+.heart {
+    top: 28%;
+    position: absolute;
+    right: 33px;
+}

@@ -1,0 +1,27 @@
+<div class="delete" padding *ngIf="show == true">
+  <div class="delete-detail" padding>
+    <h5>Delete receipt</h5>
+    <p>Are you sure you want to delete this receipt?</p>
+    <ion-row>
+      <ion-col no-padding size="6">
+        <button type="button" class="canclebtn" (click)="pop()">Cancel</button>
+      </ion-col>
+      <ion-col no-padding size="6">
+        <button type="button" class="deletebtn" (click)="delete(data?.id)">Delete</button>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>
+<div class="pop-list">
+  <ul>
+    <li (click)="goTo('home')">
+      Add New Receipt
+    </li>
+    <li (click)="edit(data)">
+      Edit Receipt
+    </li>
+    <li (click)="pop()">
+      Delete
+    </li>
+  </ul>
+</div>
