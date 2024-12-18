@@ -1,8 +1,5 @@
 # rsm_mobile_app
 
-- Android KeyStore Password : Abcd@1234
-- IOS Certificate.p12 is added with the code to upload test flight
-
 ####RSM App Setup
 1) Clone source code from bitbucket
 2) Install dependency packages via “npm install” command
@@ -24,7 +21,7 @@
     - Go to plugins -> cordova-plugin-inappbrowser folder. Replace files and folder with downloaded code
   
  5) Run command “ionic cordova build ios” or  “ionic cordova prepare ios”
- 6) Go to platform -> ios -> Open “RSM Australia.xcworkspace” in xcode and build project
+ 6) Go to platform -> ios -> Open “RSM.xcworkspace” in xcode and build project
  7) Paste given android folder to “platform”
  8) Run command “ionic cordova prepare android”
  9) Open Android Studio and import project from -> platform -> android
